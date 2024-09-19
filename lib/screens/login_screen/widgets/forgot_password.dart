@@ -1,9 +1,11 @@
+import 'package:bookmybeauty/screens/login_screen/controller/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import '../../../components/KCustomButton.dart';
-import '../../../components/kTextFormField.dart';
-import '../../../controllers/controllers_instance.dart';
+import 'package:get/get.dart';
+import '../../../components/kcustom_button.dart';
+import '../../../components/ktext_form_field.dart';
+
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({super.key});
@@ -14,6 +16,7 @@ class ForgotPassword extends StatefulWidget {
 
 class _ForgotPasswordState extends State<ForgotPassword> {
   final _formKey = GlobalKey<FormBuilderState>();
+  final LoginController loginController = Get.find<LoginController>();
   @override
   Widget build(BuildContext context) {
     return FormBuilder(
@@ -38,7 +41,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   prefixIcon: Icons.lock,
                   isPassword: true,
                   onChanged: (p0) {
-                    AppControllers.loginController.updatedPassword(pass: p0.toString());
+                    loginController.updatedPassword(pass: p0.toString());
                   },
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(),
@@ -56,7 +59,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   isPassword: true,
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(),
-                    AppControllers.loginController.confirmPasswordValidator,
+                    loginController.confirmPasswordValidator,
                   ]),
                   keyboardType: TextInputType.emailAddress,
                 ),

@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
-import '../../../components/KCustomButton.dart';
-import '../../../components/KCustomDropDown.dart';
-import '../../../components/kTextFormField.dart';
+import '../../../components/kcustom_button.dart';
+import '../../../components/kcustom_drop_down.dart';
+import '../../../components/ktext_form_field.dart';
 import '../../../components/kcustom_outline_button_primary.dart';
 import '../../../constants/colors.dart';
 
@@ -20,8 +20,7 @@ class SignupForm extends StatefulWidget {
 class _SignupFormState extends State<SignupForm> {
   final _formKey = GlobalKey<FormBuilderState>();
   bool agreeToTerms = false;
-  var loginController = Get.put(LoginController());
-
+  final LoginController loginController = Get.find<LoginController>();
 
   @override
   Widget build(BuildContext context) {

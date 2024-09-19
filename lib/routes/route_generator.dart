@@ -31,7 +31,7 @@ class RouteGenerator {
       case "/":
         return navigateToScreen(
           settings: settings,
-          route:  const LoginView(),
+          route:  const SplashView(),
         );
         case Routes.guideTourScreen:
         return navigateToScreen(

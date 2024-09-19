@@ -1,7 +1,4 @@
-
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
 import '../constants/colors.dart';
 
 class KCustomButton extends StatelessWidget {
@@ -36,7 +33,7 @@ class KCustomButton extends StatelessWidget {
               : null,
           borderRadius: BorderRadius.circular(radius ??8),
           border: isOutline ? Border.all(color: kPrimaryColor) : null,
-          gradient: gradient,
+          gradient: gradient ?? kPrimaryGradient,
           boxShadow: isOutline
               ? null
               : [

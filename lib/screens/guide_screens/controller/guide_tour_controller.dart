@@ -11,7 +11,7 @@ class GuideTourController extends GetxController {
 
   void nextPage() {
     if (currentPage.value < 2) {
-      pageController.nextPage(duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
+      pageController.nextPage(duration: const Duration(milliseconds: 260), curve: Curves.easeIn);
     }
   }
 }

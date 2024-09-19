@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
-import '../../../components/KCustomButton.dart';
-import '../../../components/kTextFormField.dart';
+import '../../../components/kcustom_button.dart';
+import '../../../components/ktext_form_field.dart';
 import '../../../util/util.dart';
 import '../controller/login_controller.dart';
 
@@ -16,7 +16,7 @@ class SendOtpView extends StatefulWidget {
 }
 
 class _SendOtpViewState extends State<SendOtpView> {
-  static final loginController = Get.put(LoginController());
+  final LoginController loginController = Get.find<LoginController>();
 
   final _formKey = GlobalKey<FormBuilderState>();
 

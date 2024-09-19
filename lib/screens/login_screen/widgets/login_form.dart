@@ -1,14 +1,12 @@
 import 'dart:developer';
 
-import 'package:bookmybeauty/components/KCustomButton.dart';
-import 'package:bookmybeauty/components/kTextFormField.dart';
+import 'package:bookmybeauty/components/kcustom_button.dart';
+import 'package:bookmybeauty/components/ktext_form_field.dart';
 import 'package:bookmybeauty/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
-
-import '../../../controllers/controllers_instance.dart';
 import '../../../util/util.dart';
 import '../controller/login_controller.dart';
 
@@ -20,8 +18,7 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
-  static final loginController = Get.put(LoginController());
-
+  final LoginController loginController = Get.find<LoginController>();
   final _formKey = GlobalKey<FormBuilderState>();
   bool agreeToTerms =false;
   @override
@@ -42,18 +39,18 @@ class _LoginFormState extends State<LoginForm> {
                   return KTextFormField(
                     name: 'email',
                     labelText: 'Email or Mobile Number',
-                    prefixIcon: AppControllers.loginController.isPhoneNumber.value ? Icons.phone : Icons.email,
+                    prefixIcon: loginController.isPhoneNumber.value ? Icons.phone : Icons.email,
                     onChanged: (s) {
                       if (Util.isPhoneNumber(s.toString())) {
-                        AppControllers.loginController.updateIsPhoneNumber(isMobileNo: true);
+                        loginController.updateIsPhoneNumber(isMobileNo: true);
                       } else {
-                        AppControllers.loginController.updateIsPhoneNumber(isMobileNo: false);
+                       loginController.updateIsPhoneNumber(isMobileNo: false);
                       }
-                      log('isPhoneNumber => ${AppControllers.loginController.isPhoneNumber.value}');
+                      log('isPhoneNumber => ${loginController.isPhoneNumber.value}');
                     },
                     validator: FormBuilderValidators.compose([
                       FormBuilderValidators.required(),
-                      AppControllers.loginController.isPhoneNumber.value ?FormBuilderValidators.phoneNumber() :FormBuilderValidators.email(),
+                      loginController.isPhoneNumber.value ?FormBuilderValidators.phoneNumber() :FormBuilderValidators.email(),
                     ]),
                     keyboardType: TextInputType.emailAddress,
                   );
@@ -112,7 +109,16 @@ class _LoginFormState extends State<LoginForm> {
                 buttonText: "Login",
 
              ),
-           )
+           ),
+           const Padding(
+            padding: EdgeInsets.only(right: 16.0,top: 30),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text("Skip",style: TextStyle(color: blueAccent,fontWeight: FontWeight.bold,fontSize: 17),),
+              ],
+            ),
+          ),
 
         ],
       ),

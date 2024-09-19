@@ -9,9 +9,9 @@ import 'package:flutter/material.dart';
   Color dimBlackColor = Colors.black54;
  const Color primaryBlack = Colors.black54;
   const Color blueColor = Colors.blueAccent;
-  const kPrimaryColor = Color(0xffd62b2b);
+  const Color kPrimaryColor = Color(0xffB81217);
   const Color dimGreyScreen = Color(0xFFEEEEEE);
-  const Color blueAccent = Colors.blueAccent;
+  const Color blueAccent = Color(0xFF0008FF);
   const Color dimLightGreyScreen = Color(0xFFF5F5F5);
   const Color categoryScreenLightGrey = Color(0xFFF1F0F6);
   const Color categoryScreenLightPurple = Color(0xFF877CA7);
@@ -21,8 +21,11 @@ import 'package:flutter/material.dart';
   const Color info = Colors.blue;
   const Color warn = Colors.yellow;
   const kPrimaryGradient = LinearGradient(
-    colors: [Color(0xff2C66B0), Color(0xff154685)],
-    begin: Alignment.topRight,
-    end: Alignment.bottomLeft,
-    stops: [0.0, 1.0],
+     colors: [
+       Color(0xFFB31217), // Color #B31217
+       Color(0xFFB81217), // Color #B81217
+       Color(0xFFD41218), // Color #D41218
+        ],
+    begin: Alignment.centerLeft,
+    end: Alignment.centerRight,
   );
