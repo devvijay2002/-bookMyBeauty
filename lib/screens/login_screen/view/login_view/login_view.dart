@@ -3,9 +3,9 @@ import 'package:bookmybeauty/constants/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import '../controller/login_controller.dart';
-import '../widgets/login_form.dart';
-import '../widgets/signup_form.dart';
+import '../../controller/login_controller.dart';
+import '../../widgets/login_form.dart';
+import '../../widgets/signup_form.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -26,22 +26,32 @@ class LoginViewState extends State<LoginView> {
         width: Get.width,
         height: Get.height,
         decoration: const BoxDecoration(
-          color: kPrimaryColor
-         /* image: DecorationImage(
+          image: DecorationImage(
             fit: BoxFit.cover,
             image: AssetImage(loginBg), // Use appropriate path
-          ),*/
+          ),
         ),
         child: Column(
           children: [
-            Container(
-              height: Get.height*0.2,
-              padding: EdgeInsets.only(top: Get.height * 1 / 14),
-              child: const Image(
-                fit: BoxFit.cover,
-                  image: AssetImage("assets/icons/app_logo_png.png")
-              )
+            Padding(
+              padding:  EdgeInsets.only(top: Get.height*0.03),
+              child: Row(
+                children: [
+                  IconButton(onPressed: () {
+
+                  },
+                      icon: const Icon(Icons.arrow_back_sharp,color: Colors.transparent,size: 30,))
+                ],
+              ),
             ),
+            SizedBox(
+                height: Get.height*0.13,
+                child: const Image(
+                    fit: BoxFit.cover,
+                    image: AssetImage("assets/icons/app_logo_png.png")
+                )
+            ),
+
             const SizedBox(height: 10),
             const Text(
               "BookMyBeauty",

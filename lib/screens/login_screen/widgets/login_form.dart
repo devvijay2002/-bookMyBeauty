@@ -94,7 +94,7 @@ class _LoginFormState extends State<LoginForm> {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, Routes.forgotPassword);
+                  Navigator.pushNamed(context, Routes.sendOtpRoute);
                 },
                 child: const Padding(
                   padding: EdgeInsets.only(right: 12.0),

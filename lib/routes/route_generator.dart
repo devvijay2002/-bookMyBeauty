@@ -1,10 +1,12 @@
 import 'dart:developer';
 import 'dart:io';
 import 'package:bookmybeauty/routes/routes.dart';
-import 'package:bookmybeauty/screens/login_screen/view/forgot_password_view.dart';
+import 'package:bookmybeauty/screens/login_screen/view/forgot_password_module/reset_password_view.dart';
+import 'package:bookmybeauty/screens/login_screen/view/forgot_password_module/verify_otp_view.dart';
+import 'package:bookmybeauty/screens/login_screen/view/forgot_password_module/send_otp_view.dart';
 import 'package:flutter/cupertino.dart';
 import '../screens/guide_screens/view/guide_view.dart';
-import '../screens/login_screen/view/login_view.dart';
+import '../screens/login_screen/view/login_view/login_view.dart';
 import '../screens/splash_screen/view/splash_view.dart';
 import '../shared/fade_route_transition.dart';
 
@@ -44,10 +46,20 @@ class RouteGenerator {
           settings: settings,
           route: const LoginView(),
         );
-        case Routes.forgotPassword:
+        case Routes.sendOtpRoute:
         return navigateToScreen(
           settings: settings,
-          route: const ForgotPasswordView(),
+          route: const SendOtpView(),
+        );
+        case Routes.verifyOtpRoute:
+        return navigateToScreen(
+          settings: settings,
+          route: const VerifyOtpView(),
+        );
+        case Routes.resetPasswordRoute:
+        return navigateToScreen(
+          settings: settings,
+          route: const ResetPasswordView(),
         );
         default:
         return FadeRoute(

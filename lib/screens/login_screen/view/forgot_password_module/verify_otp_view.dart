@@ -1,19 +1,18 @@
+
 import 'package:bookmybeauty/constants/colors.dart';
-import 'package:bookmybeauty/screens/login_screen/widgets/forgot_password_form.dart';
+import 'package:bookmybeauty/screens/login_screen/widgets/otp_form.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../controller/login_controller.dart';
+import '../../../../constants/images.dart';
 
-class ForgotPasswordView extends StatefulWidget {
-  const ForgotPasswordView({super.key});
+class VerifyOtpView extends StatefulWidget {
+  const VerifyOtpView({super.key});
 
   @override
-  State<ForgotPasswordView> createState() => ForgotPasswordViewState();
+  State<VerifyOtpView> createState() => _VerifyOtpViewState();
 }
 
-class ForgotPasswordViewState extends State<ForgotPasswordView> {
-  final LoginController loginController = Get.find<LoginController>();
-  List<bool> isSelected = [true, false];
+class _VerifyOtpViewState extends State<VerifyOtpView> {
 
   @override
   Widget build(BuildContext context) {
@@ -23,17 +22,26 @@ class ForgotPasswordViewState extends State<ForgotPasswordView> {
         width: Get.width,
         height: Get.height,
         decoration: const BoxDecoration(
-            color: kPrimaryColor
-          /* image: DecorationImage(
+           image: DecorationImage(
             fit: BoxFit.cover,
             image: AssetImage(loginBg), // Use appropriate path
-          ),*/
+          ),
         ),
         child: Column(
           children: [
-            Container(
-                height: Get.height*0.2,
-                padding: EdgeInsets.only(top: Get.height * 1 / 14),
+            Padding(
+              padding:  EdgeInsets.only(top: Get.height*0.03),
+              child: Row(
+                children: [
+                  IconButton(onPressed: () {
+                    Navigator.pop(context);
+                  },
+                      icon: const Icon(Icons.arrow_back_sharp,color: Colors.white,size: 30,))
+                ],
+              ),
+            ),
+            SizedBox(
+                height: Get.height*0.13,
                 child: const Image(
                     fit: BoxFit.cover,
                     image: AssetImage("assets/icons/app_logo_png.png")
@@ -59,20 +67,25 @@ class ForgotPasswordViewState extends State<ForgotPasswordView> {
                 child:  const Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    SizedBox(height: 20,),
+                    SizedBox(height: 30,),
                     Text(
-                      "Create Password",
-                      style: TextStyle( fontSize: 19,fontWeight: FontWeight.bold),
+                      'Verify Your OTP',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                    SizedBox(height: 10,),
+                    SizedBox(height: 13),
                     Text(
-                      "Reference site about giving information",
-                      style: TextStyle( fontSize: 16,fontWeight: FontWeight.w400,),
+                      'Enter Your 4 Digits OTP',
+                      style: TextStyle(
+                        fontSize: 17,
+                      ),
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 30),
                     Expanded(
                       child: SingleChildScrollView(
-                        child: ForgotPasswordForm()
+                          child: OtpForm()
                       ),
                     ),
                   ],
