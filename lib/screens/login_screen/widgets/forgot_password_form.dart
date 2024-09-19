@@ -7,14 +7,14 @@ import '../../../components/kcustom_button.dart';
 import '../../../components/form_builder_text_form_field.dart';
 
 
-class ForgotPassword extends StatefulWidget {
-  const ForgotPassword({super.key});
+class ForgotPasswordForm extends StatefulWidget {
+  const ForgotPasswordForm({super.key});
 
   @override
-  State<ForgotPassword> createState() => _ForgotPasswordState();
+  State<ForgotPasswordForm> createState() => _ForgotPasswordFormState();
 }
 
-class _ForgotPasswordState extends State<ForgotPassword> {
+class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
   final _formKey = GlobalKey<FormBuilderState>();
   final LoginController loginController = Get.find<LoginController>();
   @override
@@ -24,10 +24,6 @@ class _ForgotPasswordState extends State<ForgotPassword> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Text("Create Password"),
-          const SizedBox(height: 13),
-          const Text("Reference site about giving information"),
-          const SizedBox(height: 30),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: Column(

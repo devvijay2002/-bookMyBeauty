@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:bookmybeauty/components/form_builder_text_form_field.dart';
 import 'package:bookmybeauty/components/kcustom_button.dart';
 import 'package:bookmybeauty/constants/colors.dart';
+import 'package:bookmybeauty/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
@@ -91,9 +92,14 @@ class _LoginFormState extends State<LoginForm> {
                   const Text("Remember me"),
                 ],
               ),
-              const Padding(
-                padding: EdgeInsets.only(right: 12.0),
-                child: Text("Forgot Password?",style: TextStyle(color: blueAccent,fontWeight: FontWeight.bold),),
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, Routes.forgotPassword);
+                },
+                child: const Padding(
+                  padding: EdgeInsets.only(right: 12.0),
+                  child: Text("Forgot Password?",style: TextStyle(color: blueAccent,fontWeight: FontWeight.bold),),
+                ),
               ),
             ],
           ),
