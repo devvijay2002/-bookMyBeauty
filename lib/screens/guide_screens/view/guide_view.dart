@@ -47,7 +47,7 @@ class GuideTourScreen extends StatelessWidget {
                     ),
                   ),
                   child: Padding(
-                    padding: EdgeInsets.only(bottom: Get.height * 0.27),
+                    padding: EdgeInsets.only(bottom: Get.height * 0.23),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
@@ -99,7 +99,7 @@ class GuideTourScreen extends StatelessWidget {
               ),
             ),
              Positioned(
-              bottom: -40,
+              bottom: -45,
               right: -10,
               child: GestureDetector(
                 onTap: () {
