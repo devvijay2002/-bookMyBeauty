@@ -2,6 +2,7 @@ import 'package:bookmybeauty/constants/images.dart';
 import 'package:bookmybeauty/screens/login_screen/view/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../routes/routes.dart';
 import '../controller/guide_tour_controller.dart';
 
 class GuideTourScreen extends StatelessWidget {
@@ -104,11 +105,11 @@ class GuideTourScreen extends StatelessWidget {
               child: GestureDetector(
                 onTap: () {
                   if (guideTourController.currentPage.value == guideData.length - 1) {
-               //     Navigator.pushNamed(context, Routes.loginPageRoute);
-                    Get.to(() => const LoginView(),
+                    Navigator.pushNamed(context, Routes.loginPageRoute);
+              /*      Get.to(() => const LoginView(),
                       transition: Transition.fadeIn, // Choose the desired transition
-                      duration: const Duration(milliseconds: 300), // Optional: Customize the duration
-                    );
+                      duration: const Duration(milliseconds: 400), // Optional: Customize the duration
+                    );*/
                   } else {
                     guideTourController.nextPage();
                   }

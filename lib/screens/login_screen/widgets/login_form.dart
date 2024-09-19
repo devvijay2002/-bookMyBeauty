@@ -1,7 +1,6 @@
 import 'dart:developer';
-
+import 'package:bookmybeauty/components/form_builder_text_form_field.dart';
 import 'package:bookmybeauty/components/kcustom_button.dart';
-import 'package:bookmybeauty/components/ktext_form_field.dart';
 import 'package:bookmybeauty/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -21,6 +20,7 @@ class _LoginFormState extends State<LoginForm> {
   final LoginController loginController = Get.find<LoginController>();
   final _formKey = GlobalKey<FormBuilderState>();
   bool agreeToTerms =false;
+
   @override
   Widget build(BuildContext context) {
     return FormBuilder(
@@ -28,7 +28,7 @@ class _LoginFormState extends State<LoginForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-           Padding(
+          Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,7 +36,7 @@ class _LoginFormState extends State<LoginForm> {
                 const Text("Enter Email I'd or Mobile Number"),
                 const SizedBox(height: 14),
                 Obx(() {
-                  return KTextFormField(
+                  return CustomTextFormField(
                     name: 'email',
                     labelText: 'Email or Mobile Number',
                     prefixIcon: loginController.isPhoneNumber.value ? Icons.phone : Icons.email,
@@ -44,7 +44,7 @@ class _LoginFormState extends State<LoginForm> {
                       if (Util.isPhoneNumber(s.toString())) {
                         loginController.updateIsPhoneNumber(isMobileNo: true);
                       } else {
-                       loginController.updateIsPhoneNumber(isMobileNo: false);
+                        loginController.updateIsPhoneNumber(isMobileNo: false);
                       }
                       log('isPhoneNumber => ${loginController.isPhoneNumber.value}');
                     },
@@ -58,7 +58,7 @@ class _LoginFormState extends State<LoginForm> {
                 const SizedBox(height: 20),
                 const Text('Enter Password'),
                 const SizedBox(height: 14),
-                KTextFormField(
+                CustomTextFormField(
                   name: 'password',
                   labelText: 'Password',
                   prefixIcon: Icons.lock,
@@ -72,8 +72,8 @@ class _LoginFormState extends State<LoginForm> {
               ],
             ),
           ),
-           const SizedBox(height: 10,),
-           Row(
+          const SizedBox(height: 10,),
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
@@ -99,18 +99,18 @@ class _LoginFormState extends State<LoginForm> {
           ),
           const SizedBox(height: 20,),
           Padding(
-             padding: const EdgeInsets.symmetric(horizontal: 10.0),
-             child: KCustomButton(
-               onTap: () {
-                 _formKey.currentState?.saveAndValidate();
-                 debugPrint(_formKey.currentState?.value.toString());
-               },
-               iconChild: const Icon(Icons.arrow_forward,color: Colors.white),
-                buttonText: "Login",
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            child: KCustomButton(
+              onTap: () {
+                _formKey.currentState?.saveAndValidate();
+                debugPrint(_formKey.currentState?.value.toString());
+              },
+              iconChild: const Icon(Icons.arrow_forward,color: Colors.white),
+              buttonText: "Login",
 
-             ),
-           ),
-           const Padding(
+            ),
+          ),
+          const Padding(
             padding: EdgeInsets.only(right: 16.0,top: 30),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,

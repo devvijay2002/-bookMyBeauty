@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import '../constants/colors.dart';
 
-class KTextFormField extends StatefulWidget {
+class CustomTextFormField extends StatefulWidget {
+  final String name;
   final String labelText;
   final bool isPassword;
   final bool obscureText;
   final IconData? prefixIcon;
   final IconData? suffixIcon;
-  final TextEditingController controller;
   final String? Function(String?)? validator;
   final void Function(String?)? onChanged;
   final TextInputType? keyboardType;
 
-  const KTextFormField({
+  const CustomTextFormField({
     super.key,
+    required this.name,
     required this.labelText,
     this.isPassword = false,
     this.obscureText = false,
@@ -22,16 +24,14 @@ class KTextFormField extends StatefulWidget {
     this.validator,
     this.onChanged,
     this.keyboardType,
-    required this.controller,
   });
 
   @override
-  KTextFormFieldState createState() => KTextFormFieldState();
+  CustomTextFormFieldState createState() => CustomTextFormFieldState();
 }
 
-class KTextFormFieldState extends State<KTextFormField> {
+class CustomTextFormFieldState extends State<CustomTextFormField> {
   bool _obscureText = true;
-  final TextEditingController _controller = TextEditingController();
 
   @override
   void initState() {
@@ -41,35 +41,35 @@ class KTextFormFieldState extends State<KTextFormField> {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      controller: _controller,
+    return FormBuilderTextField(
+      name: widget.name,
       obscureText: widget.isPassword ? _obscureText : false,
       decoration: InputDecoration(
         labelText: widget.labelText,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(6.0),
-          borderSide: BorderSide(
+          borderSide:  BorderSide(
             color: dimBlackColor,
             width: 1.5,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(6.0),
-          borderSide: BorderSide(
+          borderSide:  BorderSide(
             color: dimBlackColor,
             width: 1.5,
           ),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(6.0),
-          borderSide: BorderSide(
-            color: dimBlackColor,
+          borderSide:  BorderSide(
+            color:dimBlackColor,
             width: 1.5,
           ),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(6.0),
-          borderSide: BorderSide(
+          borderSide:  BorderSide(
             color: dimBlackColor,
             width: 1.5,
           ),
@@ -102,11 +102,5 @@ class KTextFormFieldState extends State<KTextFormField> {
       onChanged: widget.onChanged,
       keyboardType: widget.keyboardType,
     );
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
   }
 }

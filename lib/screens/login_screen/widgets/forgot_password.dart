@@ -4,7 +4,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 import '../../../components/kcustom_button.dart';
-import '../../../components/ktext_form_field.dart';
+import '../../../components/form_builder_text_form_field.dart';
 
 
 class ForgotPassword extends StatefulWidget {
@@ -35,7 +35,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               children: [
                 const Text("New Password"),
                 const SizedBox(height: 14),
-                KTextFormField(
+                CustomTextFormField(
                   name: 'password',
                   labelText: 'Enter Password',
                   prefixIcon: Icons.lock,
@@ -52,7 +52,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 const SizedBox(height: 20),
                 const Text("Confirm Password"),
                 const SizedBox(height: 14),
-                KTextFormField(
+                CustomTextFormField(
                   name: 'confirmPassword',
                   labelText: 'Confirm Password',
                   prefixIcon: Icons.lock,

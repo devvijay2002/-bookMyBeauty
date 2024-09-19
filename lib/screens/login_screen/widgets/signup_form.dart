@@ -6,7 +6,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 import '../../../components/kcustom_button.dart';
 import '../../../components/kcustom_drop_down.dart';
-import '../../../components/ktext_form_field.dart';
+import '../../../components/form_builder_text_form_field.dart';
 import '../../../components/kcustom_outline_button_primary.dart';
 import '../../../constants/colors.dart';
 
@@ -19,7 +19,6 @@ class SignupForm extends StatefulWidget {
 
 class _SignupFormState extends State<SignupForm> {
   final _formKey = GlobalKey<FormBuilderState>();
-  bool agreeToTerms = false;
   final LoginController loginController = Get.find<LoginController>();
 
   @override
@@ -36,19 +35,17 @@ class _SignupFormState extends State<SignupForm> {
               children: [
                 const Text("Name"),
                 const SizedBox(height: 14),
-                KTextFormField(
+                CustomTextFormField(
                   name: 'name',
                   labelText: 'Enter Name',
                   prefixIcon: Icons.email,
-                  validator: FormBuilderValidators.compose([
-                    FormBuilderValidators.required(),
-                  ]),
+                  validator: FormBuilderValidators.required(),
                   keyboardType: TextInputType.emailAddress,
                 ),
                 const SizedBox(height: 20),
                 const Text("Mobile Number"),
                 const SizedBox(height: 14),
-                KTextFormField(
+                CustomTextFormField(
                   name: 'mobile',
                   labelText: 'Enter Mobile Number',
                   prefixIcon: Icons.wifi_calling_3_rounded,
@@ -56,7 +53,7 @@ class _SignupFormState extends State<SignupForm> {
                     FormBuilderValidators.required(),
                     FormBuilderValidators.phoneNumber(),
                   ]),
-                  keyboardType: TextInputType.emailAddress,
+                  keyboardType: TextInputType.phone,
                 ),
                 const SizedBox(height: 20),
                 const Text("Gender"),
@@ -71,7 +68,7 @@ class _SignupFormState extends State<SignupForm> {
                 const SizedBox(height: 20),
                 const Text("Password"),
                 const SizedBox(height: 14),
-                KTextFormField(
+                CustomTextFormField(
                   name: 'password',
                   labelText: 'Enter Password',
                   prefixIcon: Icons.lock,
@@ -83,12 +80,12 @@ class _SignupFormState extends State<SignupForm> {
                     FormBuilderValidators.required(),
                     FormBuilderValidators.minLength(8),
                   ]),
-                  keyboardType: TextInputType.emailAddress,
+                  keyboardType: TextInputType.text,
                 ),
                 const SizedBox(height: 20),
                 const Text("Confirm Password"),
                 const SizedBox(height: 14),
-                KTextFormField(
+                CustomTextFormField(
                   name: 'confirmPassword',
                   labelText: 'Confirm Password',
                   prefixIcon: Icons.lock,
@@ -97,7 +94,7 @@ class _SignupFormState extends State<SignupForm> {
                     FormBuilderValidators.required(),
                     loginController.confirmPasswordValidator,
                   ]),
-                  keyboardType: TextInputType.emailAddress,
+                  keyboardType: TextInputType.text,
                 ),
               ],
             ),
@@ -105,16 +102,16 @@ class _SignupFormState extends State<SignupForm> {
           const SizedBox(height: 10),
           Row(
             children: [
-              Checkbox(
-                value: agreeToTerms,
-                checkColor: Colors.white,
-                activeColor: dimBlackColor,
-                onChanged: (value) {
-                  setState(() {
-                    agreeToTerms = value!;
-                  });
-                },
-              ),
+              Obx(() {
+                return Checkbox(
+                  value: loginController.agreeToTerms.value,
+                  checkColor: Colors.white,
+                  activeColor: dimBlackColor,
+                  onChanged: (value) {
+                    loginController.updateAgreeToTerms(value!);
+                  },
+                );
+              }),
               const Text("I agree to the terms & conditions"),
             ],
           ),
@@ -137,22 +134,19 @@ class _SignupFormState extends State<SignupForm> {
                   child: KCustomButton(
                     onTap: () {
                       log("password :${loginController.password.toString()}");
-                      log("password1 :${loginController.password.value}");
                       _formKey.currentState?.saveAndValidate();
                       debugPrint(_formKey.currentState?.value.toString());
                     },
                     radius: 50,
-                    iconChild: const Icon(Icons.arrow_forward,color: Colors.white,size: 17,),
+                    iconChild: const Icon(Icons.arrow_forward, color: Colors.white, size: 17,),
                     buttonText: "Signup",
                   ),
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
   }
-
-
 }

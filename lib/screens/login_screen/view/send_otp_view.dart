@@ -4,7 +4,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 import '../../../components/kcustom_button.dart';
-import '../../../components/ktext_form_field.dart';
+import '../../../components/form_builder_text_form_field.dart';
 import '../../../util/util.dart';
 import '../controller/login_controller.dart';
 
@@ -37,7 +37,7 @@ class _SendOtpViewState extends State<SendOtpView> {
                 const Text("Enter Email I'd or Mobile Number"),
                 const SizedBox(height: 14),
                 Obx(() {
-                    return KTextFormField(
+                    return CustomTextFormField(
                       name: 'email',
                       labelText: 'Email or Mobile Number',
                       prefixIcon: loginController.isPhoneNumber.value ? Icons.phone : Icons.email,

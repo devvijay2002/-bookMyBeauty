@@ -1,3 +1,4 @@
+import 'package:bookmybeauty/constants/colors.dart';
 import 'package:bookmybeauty/constants/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -20,20 +21,21 @@ class LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: kPrimaryColor,
       body: Container(
         width: Get.width,
         height: Get.height,
         decoration: const BoxDecoration(
-          image: DecorationImage(
+          color: kPrimaryColor
+         /* image: DecorationImage(
             fit: BoxFit.cover,
             image: AssetImage(loginBg), // Use appropriate path
-          ),
+          ),*/
         ),
         child: Column(
           children: [
             Container(
-              height: Get.height*0.22,
+              height: Get.height*0.2,
               padding: EdgeInsets.only(top: Get.height * 1 / 14),
               child: const Image(
                 fit: BoxFit.cover,
@@ -43,7 +45,7 @@ class LoginViewState extends State<LoginView> {
             const SizedBox(height: 10),
             const Text(
               "BookMyBeauty",
-              style: TextStyle(color: Colors.white, fontSize: 18),
+              style: TextStyle(color: Colors.white, fontSize: 18,fontWeight: FontWeight.bold,letterSpacing: 2),
             ),
             const SizedBox(height: 20),
             Expanded(
