@@ -2,6 +2,10 @@
 const String nextButtonBg = "assets/icons/next_button_bg.png";
 const String nextButtonBg2 = "assets/icons/next_button_bg2.png";
 const  String imagePickerLogo = "assets/icons/image_picker_logo.png";
+const  String appLogo = "assets/icons/app_logo.png";
+const  String menIcon = "assets/icons/men.png";
+const  String womenIcon = "assets/icons/women.png";
+const  String unisexIcon = "assets/icons/unisex.png";
 
 // Images
 const String gdTourImage1 = "assets/images/gd_tour_image1.png";

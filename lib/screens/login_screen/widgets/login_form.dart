@@ -94,7 +94,7 @@ class _LoginFormState extends State<LoginForm> {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, Routes.sendOtpRoute);
+                  Navigator.pushNamed(context, Routes.homeViewRoute);
                 },
                 child: const Padding(
                   padding: EdgeInsets.only(right: 12.0),
@@ -108,12 +108,12 @@ class _LoginFormState extends State<LoginForm> {
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: KCustomButton(
               onTap: () {
-                _formKey.currentState?.saveAndValidate();
-                debugPrint(_formKey.currentState?.value.toString());
+              /*  _formKey.currentState?.saveAndValidate();
+                debugPrint(_formKey.currentState?.value.toString());*/
+                Navigator.pushNamed(context, Routes.homeViewRoute);
               },
               iconChild: const Icon(Icons.arrow_forward,color: Colors.white),
               buttonText: "Login",
-
             ),
           ),
           const Padding(

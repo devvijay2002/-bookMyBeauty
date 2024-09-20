@@ -5,12 +5,11 @@ import 'package:flutter/material.dart';
 
   const Color secondaryColor = Color(0xFF27AEB7);
   const Color dimWhite = Colors.white70;
-  Color dimGreyText = Colors.grey.shade400;
-  Color dimBlackColor = Colors.black54;
- const Color primaryBlack = Colors.black54;
+  const Color dimBlackColor = Colors.black54;
   const Color blueColor = Colors.blueAccent;
   const Color kPrimaryColor = Color(0xffB81217);
-  const Color dimGreyScreen = Color(0xFFEEEEEE);
+  const Color dimGreyColor = Color(0xFFD3D3D3);
+  const Color dimRedColor = Color(0xFFFFD6D6);
   const Color blueAccent = Color(0xFF0008FF);
   const Color dimLightGreyScreen = Color(0xFFF5F5F5);
   const Color categoryScreenLightGrey = Color(0xFFF1F0F6);

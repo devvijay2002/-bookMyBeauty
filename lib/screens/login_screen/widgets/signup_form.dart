@@ -10,8 +10,8 @@ import '../../../components/kcustom_drop_down.dart';
 import '../../../components/form_builder_text_form_field.dart';
 import '../../../components/kcustom_outline_button_primary.dart';
 import '../../../constants/colors.dart';
-import '../../../constants/images.dart';
 import '../../../shared/custom_popups/main_class/custom_popups.dart';
+
 
 class SignupForm extends StatefulWidget {
   const SignupForm({super.key});
@@ -44,8 +44,8 @@ class _SignupFormState extends State<SignupForm> {
                     child: Stack(
                       children: [
                         Container(
-                          height:70,
-                          width:70,
+                          height:Get.height*0.09,
+                          width:Get.height*0.09,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(100.0),
                             color: Colors.white,

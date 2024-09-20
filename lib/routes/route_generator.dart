@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 import 'package:bookmybeauty/routes/routes.dart';
+import 'package:bookmybeauty/screens/home_screen/view/home_view.dart';
 import 'package:bookmybeauty/screens/login_screen/view/forgot_password_module/reset_password_view.dart';
 import 'package:bookmybeauty/screens/login_screen/view/forgot_password_module/verify_otp_view.dart';
 import 'package:bookmybeauty/screens/login_screen/view/forgot_password_module/send_otp_view.dart';
@@ -60,6 +61,11 @@ class RouteGenerator {
         return navigateToScreen(
           settings: settings,
           route: const ResetPasswordView(),
+        );
+        case Routes.homeViewRoute:
+        return navigateToScreen(
+          settings: settings,
+          route: const HomeView(),
         );
         default:
         return FadeRoute(
