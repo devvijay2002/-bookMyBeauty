@@ -4,7 +4,11 @@ class LoginController extends GetxController {
   RxString password = ''.obs;
   RxBool isPhoneNumber = false.obs;
   RxBool agreeToTerms = false.obs;
+  RxString croppedImagePath = ''.obs;
 
+  void updateCroppedImagePath(String path) {
+    croppedImagePath.value = path;
+  }
   void updatedPassword({required String pass}) {
     password.value = pass;
   }

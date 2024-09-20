@@ -1,7 +1,7 @@
 // Icons
 const String nextButtonBg = "assets/icons/next_button_bg.png";
 const String nextButtonBg2 = "assets/icons/next_button_bg2.png";
-
+const  String imagePickerLogo = "assets/icons/image_picker_logo.png";
 
 // Images
 const String gdTourImage1 = "assets/images/gd_tour_image1.png";

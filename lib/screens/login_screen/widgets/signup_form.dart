@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 import 'package:bookmybeauty/screens/login_screen/controller/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -9,6 +10,8 @@ import '../../../components/kcustom_drop_down.dart';
 import '../../../components/form_builder_text_form_field.dart';
 import '../../../components/kcustom_outline_button_primary.dart';
 import '../../../constants/colors.dart';
+import '../../../constants/images.dart';
+import '../../../shared/custom_popups/main_class/custom_popups.dart';
 
 class SignupForm extends StatefulWidget {
   const SignupForm({super.key});
@@ -33,6 +36,56 @@ class _SignupFormState extends State<SignupForm> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  GestureDetector(
+                    onTap: () => CustomPopups.showImagePickerPopup(context: context),
+                    child: Stack(
+                      children: [
+                        Container(
+                          height:70,
+                          width:70,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(100.0),
+                            color: Colors.white,
+                            border: Border.all(
+                              color: dimBlackColor,
+                              width: 2.0,
+                            ),
+                          ),
+                          child:ClipOval(
+                              child:Obx(() {
+                                if (loginController.croppedImagePath.isNotEmpty) {
+                                  return Image.file(File(loginController.croppedImagePath.value));
+                                } else {
+                                  return Icon(Icons.person,size: 40,color: dimBlackColor,);
+                                }
+                              })
+
+                          ),
+                        ),
+                        Positioned(
+                            bottom: 0,
+                            right: 0,
+                            child: Container(
+                                height :30,
+                                width :30,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(100.0),
+                                    color: Colors.white,
+                                    border: Border.all(
+                                      color: dimBlackColor,
+                                      width: 1.0,
+                                    )
+                                ),
+                                child: const Center(child: Icon(Icons.camera_alt,color: Colors.black,size: 17,)))
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
                 const Text("Name"),
                 const SizedBox(height: 14),
                 CustomTextFormField(

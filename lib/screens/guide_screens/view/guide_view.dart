@@ -105,11 +105,11 @@ class GuideTourScreen extends StatelessWidget {
               child: GestureDetector(
                 onTap: () {
                   if (guideTourController.currentPage.value == guideData.length - 1) {
-                    Navigator.pushNamed(context, Routes.loginPageRoute);
-              /*      Get.to(() => const LoginView(),
+              //      Navigator.pushNamed(context, Routes.loginPageRoute);
+                    Get.off(() => const LoginView(),
                       transition: Transition.fadeIn, // Choose the desired transition
-                      duration: const Duration(milliseconds: 400), // Optional: Customize the duration
-                    );*/
+                      duration: const Duration(milliseconds: 700), // Optional: Customize the duration
+                    );
                   } else {
                     guideTourController.nextPage();
                   }

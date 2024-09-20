@@ -99,7 +99,7 @@ class _SendOtpViewState extends State<SendOtpView> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           SizedBox(height: 40),
-                          Text("Reference site about giving information"),
+                          Text("Reference site about giving information",style: TextStyle(fontSize: 17),),
                           SizedBox(height: 30),
                           SendOtpForm(),
                         ],
