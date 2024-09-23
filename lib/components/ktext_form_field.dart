@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import '../constants/colors.dart';
 
 class KTextFormField extends StatefulWidget {
-  final String labelText;
+  final String? labelText;
+  final String? hintText;
   final bool isPassword;
   final bool obscureText;
   final IconData? prefixIcon;
   final IconData? suffixIcon;
+  final bool? filled;
+  final bool isBorderSide;
+  final Color? fillColor;
   final TextEditingController controller;
   final String? Function(String?)? validator;
   final void Function(String?)? onChanged;
@@ -14,12 +18,16 @@ class KTextFormField extends StatefulWidget {
 
   const KTextFormField({
     super.key,
-    required this.labelText,
+    this.labelText,
     this.isPassword = false,
     this.obscureText = false,
     this.prefixIcon,
     this.suffixIcon,
     this.validator,
+    this.fillColor,
+    this.filled,
+    this.isBorderSide=true,
+    this.hintText,
     this.onChanged,
     this.keyboardType,
     required this.controller,
@@ -45,34 +53,37 @@ class KTextFormFieldState extends State<KTextFormField> {
       controller: _controller,
       obscureText: widget.isPassword ? _obscureText : false,
       decoration: InputDecoration(
+        fillColor: widget.fillColor ?? Colors.transparent,
+        filled: widget.filled ?? false,
         labelText: widget.labelText,
+        hintText: widget.hintText,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(6.0),
-          borderSide: BorderSide(
+          borderSide: widget.isBorderSide ? const BorderSide(
             color: dimBlackColor,
             width: 1.5,
-          ),
+          ) :BorderSide.none,
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(6.0),
-          borderSide: BorderSide(
+          borderSide: widget.isBorderSide ? const BorderSide(
             color: dimBlackColor,
             width: 1.5,
-          ),
+          ) :BorderSide.none,
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(6.0),
-          borderSide: BorderSide(
+          borderSide: widget.isBorderSide ? const BorderSide(
             color: dimBlackColor,
             width: 1.5,
-          ),
+          ) :BorderSide.none,
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(6.0),
-          borderSide: BorderSide(
+          borderSide:widget.isBorderSide ? const BorderSide(
             color: dimBlackColor,
             width: 1.5,
-          ),
+          ) :BorderSide.none,
         ),
         contentPadding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
         errorStyle: const TextStyle(

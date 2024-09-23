@@ -1,5 +1,7 @@
 import 'package:bookmybeauty/constants/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 
 class KToggleButton extends StatefulWidget {
   const KToggleButton({super.key});
@@ -42,8 +44,8 @@ class _KToggleButtonState extends State<KToggleButton> {
                       ),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.only(
-                      left: 40, right: 30, top: 8, bottom: 8),
+                  padding:  EdgeInsets.only(
+                      left: Get.width*0.07, right: Get.width*0.07, top: 8, bottom: 8),
                   child: Text(
                     'Walk-In',
                     textAlign: TextAlign.center,
@@ -74,8 +76,8 @@ class _KToggleButtonState extends State<KToggleButton> {
                       ),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.only(
-                      left: 30, right: 30, top: 8, bottom: 8),
+                  padding:  EdgeInsets.only(
+                      left: Get.width*0.07, right:Get.width*0.07, top: 8, bottom: 8),
                   child: Text(
                     'Home-Visit',
                     textAlign: TextAlign.center,

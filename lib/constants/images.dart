@@ -13,6 +13,9 @@ const String gdTourImage2 = "assets/images/gd_tour_image2.png";
 const String gdTourImage3 = "assets/images/gd_tour_image3.png";
 const String loginBg = "assets/images/login_bg.png";
 const String splashBackground = "assets/images/splash_background.png";
+const String girlImage = "assets/images/girl_image.png";
+const String girlImage2 = "assets/images/girl2_image.png";
+const String saloonImage = "assets/images/saloon_image.png";
 
 
 //svg

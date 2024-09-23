@@ -9,11 +9,13 @@ class KCustomButton extends StatelessWidget {
         this.gradient,
         this.isOutline = false,
         this.textStyle,
+        this.verticalPadding,
         this.radius,
         this.heightFactor =1/19,
         this.iconChild});
   final String buttonText;
   final double heightFactor;
+  final double? verticalPadding;
   final double? radius;
   final TextStyle? textStyle;
   final Widget? iconChild;
@@ -45,7 +47,7 @@ class KCustomButton extends StatelessWidget {
           ],
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 5,vertical: 14),
+          padding:  EdgeInsets.symmetric(horizontal: 5,vertical: verticalPadding ?? 14),
           child: Center(
             child: iconChild == null
                 ? Text(
