@@ -8,6 +8,7 @@ class CustomTextFormField extends StatefulWidget {
   final bool isPassword;
   final bool obscureText;
   final IconData? prefixIcon;
+  final double? verticalPadding;
   final IconData? suffixIcon;
   final String? Function(String?)? validator;
   final void Function(String?)? onChanged;
@@ -21,6 +22,7 @@ class CustomTextFormField extends StatefulWidget {
     this.obscureText = false,
     this.prefixIcon,
     this.suffixIcon,
+    this.verticalPadding,
     this.validator,
     this.onChanged,
     this.keyboardType,
@@ -74,7 +76,7 @@ class CustomTextFormFieldState extends State<CustomTextFormField> {
             width: 1,
           ),
         ),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
+        contentPadding:  EdgeInsets.symmetric(horizontal: 10.0, vertical:widget.verticalPadding?? 10),
         errorStyle: const TextStyle(
           fontSize: 12.0,
           color: kPrimaryColor,
