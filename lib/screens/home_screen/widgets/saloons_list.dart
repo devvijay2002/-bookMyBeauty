@@ -139,6 +139,20 @@ class SalonCard extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
+ /*         AspectRatio(
+            aspectRatio: 2.2/1,
+            child: Container(
+              clipBehavior: Clip.none,
+              margin: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(14),
+                  image: DecorationImage(
+                      fit: BoxFit.fill,
+                      image: AssetImage(image)
+                  )
+              ),
+            ),
+          ),*/
           ClipRRect(
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(15),
@@ -147,7 +161,7 @@ class SalonCard extends StatelessWidget {
             child: AspectRatio(
               aspectRatio: 2.2 / 1,
               child: Image(
-                fit: BoxFit.cover,
+                fit: BoxFit.fill,
                 image: AssetImage(image),
               ),
             ),
