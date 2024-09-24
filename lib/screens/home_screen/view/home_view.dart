@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bookmybeauty/constants/colors.dart';
 import 'package:bookmybeauty/constants/images.dart';
 import 'package:bookmybeauty/screens/home_screen/widgets/home_app_bar.dart';
@@ -25,6 +27,7 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
+    log("build method called");
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: const HomeAppBar(),

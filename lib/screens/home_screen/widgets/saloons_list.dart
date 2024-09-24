@@ -1,4 +1,7 @@
 
+import 'dart:developer';
+
+import 'package:bookmybeauty/screens/home_screen/controller/saloon_list_controller.dart';
 import 'package:expandable_page_view/expandable_page_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -18,13 +21,15 @@ class SaloonsListWidget extends StatefulWidget {
 }
 
 class SaloonsListWidgetState extends State<SaloonsListWidget> {
-  final PageController _pageController = PageController(viewportFraction: 0.7);
+  final PageController _pageController = PageController(viewportFraction: 0.8);
+  final SaloonListController controller = Get.find<SaloonListController>(); // Inject controller
   TextEditingController searchSaloonController = TextEditingController();
   double _currentPage = 0;
 
   @override
   void initState() {
     super.initState();
+    controller.fetchSaloons();
     _pageController.addListener(() {
       setState(() {
         _currentPage = _pageController.page!;
@@ -34,21 +39,6 @@ class SaloonsListWidgetState extends State<SaloonsListWidget> {
 
   @override
   Widget build(BuildContext context) {
-    List<String> images = [
-      saloonImage,
-      saloonImage,
-      saloonImage,
-      saloonImage,
-      saloonImage,
-    ];
-    List<String> titles = [
-      "Saloon1",
-      "Saloon2",
-      "Saloon3",
-      "Saloon4",
-      "Saloon5",
-    ];
-
     return SingleChildScrollView(
       child: Container(
         color: dimRedColor,
@@ -56,16 +46,30 @@ class SaloonsListWidgetState extends State<SaloonsListWidget> {
         child: Column(
           children: [
             Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                child: Stack(
-                  alignment: Alignment.centerRight,
-                  children: [
-                    KTextFormField(controller: searchSaloonController,isBorderSide: false,fillColor: Colors.white70,filled: true,hintText: "Search Saloon",),
-                    SizedBox(
-                        width: Get.width*0.28,
-                        child: const KCustomButton(buttonText: "Search",verticalPadding: 12,textStyle: TextStyle(fontSize: 14,color: Colors.white),))
-                  ],
-                )
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: Stack(
+                alignment: Alignment.centerRight,
+                children: [
+                  KTextFormField(
+                    controller: searchSaloonController,
+                    isBorderSide: false,
+                    fillColor: Colors.white70,
+                    filled: true,
+                    hintText: "Search Saloon",
+                    onChanged: (value) {
+                      controller.searchSaloon(value.toString());
+                    },
+                  ),
+                  SizedBox(
+                    width: Get.width * 0.28,
+                    child: const KCustomButton(
+                      buttonText: "Search",
+                      verticalPadding: 12,
+                      textStyle: TextStyle(fontSize: 14, color: Colors.white),
+                    ),
+                  ),
+                ],
+              ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 20),
@@ -84,33 +88,30 @@ class SaloonsListWidgetState extends State<SaloonsListWidget> {
                 ],
               ),
             ),
+            Obx(() {
+              return ExpandablePageView.builder(
+                controller: _pageController,
+                itemCount: controller.saloons.length,
+                itemBuilder: (context, index) {
+                  final double scale = (_currentPage - index).abs().clamp(0.0, 1.0);
+                  final double currentScale = 1 - (scale * 0.1);
+                  final double currentOpacity = 1 - (scale * 0.5);
 
-            ExpandablePageView.builder(
-              controller: _pageController,
-              animateFirstPage: true,
-              estimatedPageSize: 100,
-              itemCount: images.length,
-              itemBuilder: (context, index) {
-                final double scale = (_currentPage - index).abs().clamp(0.0, 1.0);
-                final double currentScale = 1 - (scale * 0.1);
-                final double currentOpacity = 1 - (scale * 0.5);
-
-                return Transform.scale(
-                  scale: currentScale,
-                  child: Opacity(
-                    opacity: currentOpacity,
-                    child: IntrinsicHeight(
-                      child: SalonCard(
-                        image: images[index],
-                        title: titles[index],
+                  return Transform.scale(
+                    scale: currentScale,
+                    child: Opacity(
+                      opacity: currentOpacity,
+                      child: IntrinsicHeight(
+                        child: SalonCard(
+                          image: saloonImage,
+                          title: controller.saloons[index],
+                        ),
                       ),
                     ),
-                  ),
-                );
-              },
-            ),
-
-
+                  );
+                },
+              );
+            }),
           ],
         ),
       ),
