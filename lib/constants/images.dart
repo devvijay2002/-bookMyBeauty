@@ -17,6 +17,7 @@ const String splashBackground = "assets/images/splash_background.png";
 const String girlImage = "assets/images/girl_image.png";
 const String girlImage2 = "assets/images/girl2_image.png";
 const String saloonImage = "assets/images/saloon_image.png";
+const String bookAppointmentBackground = "assets/images/book_appointment.png";
 
 
 //svg

@@ -4,16 +4,13 @@ import 'package:bookmybeauty/constants/colors.dart';
 import 'package:bookmybeauty/constants/images.dart';
 import 'package:bookmybeauty/screens/home_screen/widgets/home_app_bar.dart';
 import 'package:bookmybeauty/screens/home_screen/widgets/services_list.dart';
-import 'package:bookmybeauty/shared/globle_app_bar.dart';
-import 'package:expandable_page_view/expandable_page_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../components/kcustom_button.dart';
-import '../../../components/ktext_form_field.dart';
 import '../../../components/ktoggle_button.dart';
 import '../widgets/saloon_type.dart';
 import '../widgets/saloons_list.dart';
 import '../widgets/trending_services.dart';
+import '../widgets/video_card_widget.dart';
 
 
 class HomeView extends StatefulWidget {
@@ -80,7 +77,32 @@ class _HomeViewState extends State<HomeView> {
                 ],
               ),
             ),
-            const SaloonsListWidget()
+            const SaloonsListWidget(),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 20),
+              child: Container(
+               height: Get.height*0.15,
+                width: Get.width,
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                    image:DecorationImage(
+                        image: AssetImage(bookAppointmentBackground)
+                    )
+                ),
+              ),
+            ),
+
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16,vertical: 20),
+              child: VideoCardWidget(
+                imageUrl: "https://i.pinimg.com/564x/85/de/49/85de492bbb0da1b12010eacae294a6c5.jpg", // replace with your actual image URL or asset
+                title: 'Beauty Make-up',
+                viewCount: '3.6K views',
+                timeAgo: '7 months ago',
+                description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+              ),
+            ),
+
           ],
         ),
       ),
