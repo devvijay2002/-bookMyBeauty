@@ -3,15 +3,20 @@ import 'package:bookmybeauty/constants/images.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../shared/globle_app_bar.dart';
+
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   const HomeAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
+    return GlobalAppBar(
       backgroundColor: Colors.white,
-      centerTitle: true,
-      elevation: 0,
+      centerTitle: true,  leading: const Icon(
+      Icons.line_weight_outlined,
+      color: dimBlackColor, // Define dim_black_color separately
+      size: 30,
+      ),
       title: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -34,11 +39,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
         ],
       ),
-      leading: const Icon(
-        Icons.line_weight_outlined,
-        color: dimBlackColor, // Define dim_black_color separately
-        size: 30,
-      ),
+
       actions: [
         Padding(
           padding: const EdgeInsets.only(right: 10.0),
