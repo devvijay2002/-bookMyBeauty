@@ -42,11 +42,11 @@ class SaloonsListWidgetState extends State<SaloonsListWidget> {
       saloonImage,
     ];
     List<String> titles = [
-      "Hi",
-      "Hi",
-      "Hi",
-      "Hi",
-      "Hi",
+      "Saloon1",
+      "Saloon2",
+      "Saloon3",
+      "Saloon4",
+      "Saloon5",
     ];
 
     return SingleChildScrollView(
@@ -134,13 +134,6 @@ class SalonCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(15),
-        boxShadow: const [
-          BoxShadow(
-            color: Colors.black12,
-            blurRadius: 8,
-            offset: Offset(0, 4),
-          ),
-        ],
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -151,7 +144,7 @@ class SalonCard extends StatelessWidget {
               topRight: Radius.circular(15),
             ),
             child: AspectRatio(
-              aspectRatio: 2 / 1,
+              aspectRatio: 2.2 / 1,
               child: Image(
                 fit: BoxFit.cover,
                 image: AssetImage(image),
@@ -163,14 +156,24 @@ class SalonCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                  ),
+                Row(
+                  children: [
+                    Text(
+                      title,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                    ),
+                    Spacer(),
+                    Image.asset(
+                        googleMapIcon,
+                        width: Get.width*0.08,
+                        height: Get.width*0.08,
+                    )
+                  ],
                 ),
-                const SizedBox(height: 5),
+                const SizedBox(height: 2),
                 const Row(
                   children: [
                     Text(
@@ -196,7 +199,7 @@ class SalonCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 5),
                 const Text(
                   'Ambience Rating',
                   style: TextStyle(
@@ -243,7 +246,7 @@ class SalonCard extends StatelessWidget {
                 const SizedBox(height: 15),
                 const KCustomButton(
                   buttonText: "Book Appointment",
-                  radius: 70,
+                  radius: 100,
                   verticalPadding: 10,
                   iconChild: Icon(Icons.arrow_forward_outlined, color: Colors.white),
                 ),

@@ -27,7 +27,7 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: HomeAppBar(),
+      appBar: const HomeAppBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [

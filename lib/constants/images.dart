@@ -6,6 +6,7 @@ const  String appLogo = "assets/icons/app_logo.png";
 const  String menIcon = "assets/icons/men.png";
 const  String womenIcon = "assets/icons/women.png";
 const  String unisexIcon = "assets/icons/unisex.png";
+const  String googleMapIcon = "assets/icons/google_map.png";
 
 // Images
 const String gdTourImage1 = "assets/images/gd_tour_image1.png";
