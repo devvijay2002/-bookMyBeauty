@@ -1,12 +1,9 @@
 import 'package:bookmybeauty/components/form_builder_text_form_field.dart';
-import 'package:bookmybeauty/components/ktext_form_field.dart';
 import 'package:bookmybeauty/constants/colors.dart';
 import 'package:bookmybeauty/shared/globle_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-
-import '../../home_screen/widgets/saloons_list.dart';
 import '../widgets/services_list_widget.dart';
 
 class SearchSaloons extends StatefulWidget {
@@ -27,6 +24,7 @@ class SearchSaloonsState extends State<SearchSaloons> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: const GlobalAppBar(title: Text('Search Saloons/Services')),
       body: Padding(
         padding: const EdgeInsets.all(10.0),

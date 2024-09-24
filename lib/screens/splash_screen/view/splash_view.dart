@@ -1,6 +1,7 @@
 import 'package:bookmybeauty/constants/images.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../search_saloons_screen/view/saloon_details.dart';
 import '../../search_saloons_screen/view/seach_saloons.dart';
 
 
@@ -15,7 +16,7 @@ class _SplashViewState extends State<SplashView> {
 
   Future<void> initializeRoute(BuildContext context)async{
     Future.delayed(const Duration(seconds: 2),(){
-      Get.off(() => const SearchSaloons(),
+      Get.off(() =>  const SaloonDetails(),
         transition: Transition.fadeIn, // Choose the desired transition
         duration: const Duration(milliseconds: 800), // Optional: Customize the duration
       );
