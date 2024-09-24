@@ -3,31 +3,30 @@ import 'package:bookmybeauty/constants/images.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../shared/globle_app_bar.dart';
-
-class HomeAppBar extends StatelessWidget {
+class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   const HomeAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GlobalAppBar(
+    return AppBar(
       backgroundColor: Colors.white,
       centerTitle: true,
+      elevation: 0,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           SizedBox(
             height: Get.height * 0.09,
             width: Get.width * 0.09,
-            child: const Image(image: AssetImage(appLogo)),
+            child: const Image(image: AssetImage(appLogo)), // Define app_logo separately
           ),
           const SizedBox(width: 5),
           Flexible(
             child: Text(
               "BookMyBeauty",
               style: TextStyle(
-                color: kPrimaryColor,
-                fontSize: Get.width / 360 * 16,
+                color: kPrimaryColor, // Define k_primary_color separately
+                fontSize: Get.width / 360 * 15,
                 fontWeight: FontWeight.bold,
               ),
               overflow: TextOverflow.ellipsis,
@@ -37,7 +36,7 @@ class HomeAppBar extends StatelessWidget {
       ),
       leading: const Icon(
         Icons.line_weight_outlined,
-        color: dimBlackColor,
+        color: dimBlackColor, // Define dim_black_color separately
         size: 30,
       ),
       actions: [
@@ -80,5 +79,6 @@ class HomeAppBar extends StatelessWidget {
     );
   }
 
-
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

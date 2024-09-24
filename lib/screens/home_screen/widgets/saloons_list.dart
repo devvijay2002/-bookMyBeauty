@@ -1,24 +1,25 @@
-import 'package:bookmybeauty/components/kcustom_button.dart';
+
+import 'package:expandable_page_view/expandable_page_view.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
+import '../../../components/kcustom_button.dart';
+import '../../../components/ktext_form_field.dart';
 import '../../../constants/colors.dart';
+import '../../../constants/images.dart';
 
-class DynamicSizeCarousel extends StatefulWidget {
-  final List<String> images;
-  final List<String> titles;
-
-  const DynamicSizeCarousel({
-    super.key,
-    required this.images,
-    required this.titles,
-  });
+class SaloonsListWidget extends StatefulWidget {
+  const SaloonsListWidget({super.key});
 
   @override
-  DynamicSizeCarouselState createState() => DynamicSizeCarouselState();
+  SaloonsListWidgetState createState() => SaloonsListWidgetState();
 }
-class DynamicSizeCarouselState extends State<DynamicSizeCarousel> {
+
+class SaloonsListWidgetState extends State<SaloonsListWidget> {
   final PageController _pageController = PageController(viewportFraction: 0.7);
+  TextEditingController searchSaloonController = TextEditingController();
   double _currentPage = 0;
 
   @override
@@ -33,33 +34,62 @@ class DynamicSizeCarouselState extends State<DynamicSizeCarousel> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: dimRedColor,
-      child: Column(
-        children: [
-          // Search bar and other UI components
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text('Center East Delhi',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                TextButton(
-                  onPressed: () {
-                    // Implement navigation to all services
-                  },
-                  child: const Text('View All',
-                      style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
-                ),
-              ],
-            ),
-          ),
+    List<String> images = [
+      saloonImage,
+      saloonImage,
+      saloonImage,
+      saloonImage,
+      saloonImage,
+    ];
+    List<String> titles = [
+      "Hi",
+      "Hi",
+      "Hi",
+      "Hi",
+      "Hi",
+    ];
 
-          Expanded(
-            child: PageView.builder(
+    return SingleChildScrollView(
+      child: Container(
+        color: dimRedColor,
+        padding: const EdgeInsets.symmetric(vertical: 40),
+        child: Column(
+          children: [
+            Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                child: Stack(
+                  alignment: Alignment.centerRight,
+                  children: [
+                    KTextFormField(controller: searchSaloonController,isBorderSide: false,fillColor: Colors.white70,filled: true,hintText: "Search Saloon",),
+                    SizedBox(
+                        width: Get.width*0.28,
+                        child: const KCustomButton(buttonText: "Search",verticalPadding: 12,textStyle: TextStyle(fontSize: 14,color: Colors.white),))
+                  ],
+                )
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text('Center East Delhi',
+                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  TextButton(
+                    onPressed: () {
+                      // Implement navigation to all services
+                    },
+                    child: const Text('View All',
+                        style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+                  ),
+                ],
+              ),
+            ),
+
+            ExpandablePageView.builder(
               controller: _pageController,
-              itemCount: widget.images.length,
+              animateFirstPage: true,
+              estimatedPageSize: 100,
+              itemCount: images.length,
               itemBuilder: (context, index) {
                 final double scale = (_currentPage - index).abs().clamp(0.0, 1.0);
                 final double currentScale = 1 - (scale * 0.1);
@@ -70,20 +100,19 @@ class DynamicSizeCarouselState extends State<DynamicSizeCarousel> {
                   child: Opacity(
                     opacity: currentOpacity,
                     child: IntrinsicHeight(
-                      child: Expanded(
-                        child: SalonCard(
-                          image: widget.images[index],
-                          title: widget.titles[index],
-                        ),
+                      child: SalonCard(
+                        image: images[index],
+                        title: titles[index],
                       ),
                     ),
                   ),
                 );
               },
             ),
-          ),
-          const SizedBox(height: 30),
-        ],
+
+
+          ],
+        ),
       ),
     );
   }
@@ -116,7 +145,6 @@ class SalonCard extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          // Image section
           ClipRRect(
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(15),
@@ -130,7 +158,6 @@ class SalonCard extends StatelessWidget {
               ),
             ),
           ),
-          // Text and details section
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Column(
@@ -228,4 +255,3 @@ class SalonCard extends StatelessWidget {
     );
   }
 }
-
