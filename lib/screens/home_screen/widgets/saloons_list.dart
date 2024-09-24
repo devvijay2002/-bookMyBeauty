@@ -180,7 +180,7 @@ class SalonCard extends StatelessWidget {
                         fontSize: 18,
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Image.asset(
                         googleMapIcon,
                         width: Get.width*0.08,

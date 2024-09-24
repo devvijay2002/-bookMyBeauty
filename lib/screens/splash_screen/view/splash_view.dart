@@ -3,6 +3,8 @@ import 'package:bookmybeauty/screens/guide_screens/view/guide_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../search_saloons/view/seach_saloons.dart';
+
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -14,7 +16,7 @@ class _SplashViewState extends State<SplashView> {
 
   Future<void> initializeRoute(BuildContext context)async{
     Future.delayed(const Duration(seconds: 2),(){
-      Get.off(() => GuideTourScreen(),
+      Get.off(() => const SearchSaloons(),
         transition: Transition.fadeIn, // Choose the desired transition
         duration: const Duration(milliseconds: 800), // Optional: Customize the duration
       );
