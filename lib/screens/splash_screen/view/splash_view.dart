@@ -1,9 +1,8 @@
 import 'package:bookmybeauty/constants/images.dart';
-import 'package:bookmybeauty/screens/guide_screens/view/guide_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../search_saloons_screen/view/seach_saloons.dart';
 
-import '../../search_saloons/view/seach_saloons.dart';
 
 
 class SplashView extends StatefulWidget {

@@ -48,30 +48,30 @@ class CustomTextFormFieldState extends State<CustomTextFormField> {
         labelText: widget.labelText,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(6.0),
-          borderSide:  BorderSide(
+          borderSide:  const BorderSide(
             color: dimBlackColor,
-            width: 1.5,
+            width: 1,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(6.0),
-          borderSide:  BorderSide(
+          borderSide:  const BorderSide(
             color: dimBlackColor,
-            width: 1.5,
+            width: 1,
           ),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(6.0),
-          borderSide:  BorderSide(
+          borderSide:  const BorderSide(
             color:dimBlackColor,
-            width: 1.5,
+            width: 1,
           ),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(6.0),
-          borderSide:  BorderSide(
+          borderSide:  const BorderSide(
             color: dimBlackColor,
-            width: 1.5,
+            width: 1,
           ),
         ),
         contentPadding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),

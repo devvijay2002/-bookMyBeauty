@@ -1,3 +1,5 @@
+import 'package:bookmybeauty/components/form_builder_text_form_field.dart';
+import 'package:bookmybeauty/components/ktext_form_field.dart';
 import 'package:bookmybeauty/constants/colors.dart';
 import 'package:bookmybeauty/shared/globle_app_bar.dart';
 import 'package:flutter/material.dart';
@@ -41,6 +43,11 @@ class SearchSaloonsState extends State<SearchSaloons> {
                   FormBuilderFieldOption(value: '2', child: Text('Search by Services')),
                 ],
                 validator: FormBuilderValidators.required(),
+              ),
+              const SizedBox(height: 10),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8.0),
+                child: CustomTextFormField(name: "searchData", labelText: "Search",suffixIcon: Icons.search),
               ),
               const SizedBox(height: 10),
               Expanded(
