@@ -16,7 +16,7 @@ class _SplashViewState extends State<SplashView> {
     Future.delayed(const Duration(seconds: 2),(){
       Get.off(() => GuideTourScreen(),
         transition: Transition.fadeIn, // Choose the desired transition
-        duration: const Duration(milliseconds: 500), // Optional: Customize the duration
+        duration: const Duration(milliseconds: 800), // Optional: Customize the duration
       );
 
     });

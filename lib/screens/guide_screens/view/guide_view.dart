@@ -2,7 +2,6 @@ import 'package:bookmybeauty/constants/images.dart';
 import 'package:bookmybeauty/screens/login_screen/view/login_view/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../routes/routes.dart';
 import '../controller/guide_tour_controller.dart';
 
 class GuideTourScreen extends StatelessWidget {

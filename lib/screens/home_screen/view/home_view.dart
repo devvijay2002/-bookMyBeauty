@@ -78,17 +78,17 @@ class _HomeViewState extends State<HomeView> {
               ),
             ),
             const SaloonsListWidget(),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 20),
-              child: Container(
-               height: Get.height*0.15,
-                width: Get.width,
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                    image:DecorationImage(
-                        image: AssetImage(bookAppointmentBackground)
-                    )
-                ),
+            Container(
+             height: Get.height*0.15,
+              clipBehavior: Clip.antiAlias,
+              margin: const EdgeInsets.symmetric(horizontal: 14,vertical: 10),
+              width: Get.width,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(14),
+                  image:const DecorationImage(
+                    fit: BoxFit.fill,
+                      image: AssetImage(bookAppointmentBackground)
+                  )
               ),
             ),
 
@@ -102,7 +102,6 @@ class _HomeViewState extends State<HomeView> {
                 description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
               ),
             ),
-
           ],
         ),
       ),
