@@ -1,6 +1,4 @@
 import 'package:bookmybeauty/components/kcustom_button.dart';
-import 'package:bookmybeauty/components/ktext_form_field.dart';
-import 'package:bookmybeauty/constants/images.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
