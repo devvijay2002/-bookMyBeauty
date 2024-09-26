@@ -101,7 +101,7 @@ class SaloonsListWidgetState extends State<SaloonsListWidget> {
                     child: Opacity(
                       opacity: currentOpacity,
                       child: IntrinsicHeight(
-                        child: SalonCard(
+                        child: SaloonCard(
                           image: saloonImage,
                           title: controller.saloons[index],
                         ),
@@ -118,11 +118,11 @@ class SaloonsListWidgetState extends State<SaloonsListWidget> {
   }
 }
 
-class SalonCard extends StatelessWidget {
+class SaloonCard extends StatelessWidget {
   final String image;
   final String title;
 
-  const SalonCard({
+  const SaloonCard({
     super.key,
     required this.image,
     required this.title,

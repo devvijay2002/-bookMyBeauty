@@ -12,27 +12,37 @@ class CareCategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: Get.width * 0.26,
-      clipBehavior: Clip.antiAlias,
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(Radius.circular(10)),
-        image: DecorationImage(
-          fit: BoxFit.fill,
-          image: AssetImage(imageUrl),
-        ),
-      ),
+    return AspectRatio(
+      aspectRatio: 1/1,
       child: Container(
-        color: redAccent,
-        child: Center(
-          child: Text(
-            category,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: fontSize,
-              fontWeight: FontWeight.w400,
-            ),
+        margin: const EdgeInsets.only(right: 10),
+        clipBehavior: Clip.antiAlias,
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(Radius.circular(10)),
+          image: DecorationImage(
+            fit: BoxFit.fill,
+            image: AssetImage(imageUrl),
           ),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 3),
+              width: Get.width,
+              color: redAccent,
+              child: Center(
+                child: Text(
+                  category,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: fontSizeSubHeading,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

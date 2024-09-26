@@ -1,9 +1,11 @@
 
+import 'package:bookmybeauty/components/ktoggle_button.dart';
+import 'package:bookmybeauty/constants/app_details.dart';
 import 'package:bookmybeauty/constants/images.dart';
 import 'package:bookmybeauty/shared/globle_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:bookmybeauty/constants/colors.dart';
-
+import '../../search_saloons/widgets/service_card_widget.dart';
 import '../widgets/care_category_card.dart';
 
 class SaloonDetails extends StatefulWidget {
@@ -70,11 +72,9 @@ class SaloonDetailsState extends State<SaloonDetails> {
                   Text('482 Reviews'),
                 ],
               ),
-
-              // Wrapped ListView in SizedBox to give height
               const SizedBox(height: 20),
               SizedBox(
-                height: 120, // Adjust height according to your needs
+                height: MediaQuery.of(context).size.height *0.128,
                 child: ListView.builder(
                   itemCount: 5,
                   scrollDirection: Axis.horizontal,
@@ -89,6 +89,27 @@ class SaloonDetailsState extends State<SaloonDetails> {
                   },
                 ),
               ),
+              const SizedBox(height: 20),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  KToggleButton(),
+                ],
+              ),
+              const SizedBox(height: 20), const Text(
+                'Hair Care Services',
+                style: TextStyle(fontWeight: FontWeight.bold,fontSize: fontSizeHeading),
+              ),
+              const SizedBox(height: 20),
+              SizedBox(
+                height: MediaQuery.of(context).size.height *0.4,
+                child: ListView.builder(
+                  itemCount: 20,
+                  itemBuilder: (context, index) {
+                    return   const ServiceCard();
+                  },),
+              ),
+              const SizedBox(height: 20),
             ],
           ),
         ),

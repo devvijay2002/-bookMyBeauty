@@ -31,7 +31,7 @@ class TrendingServiceWidget extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: MediaQuery.of(context).size.width / 3.2,  // Set height dynamically based on the screen width
+          height: MediaQuery.of(context).size.width / 3.2,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: serviceImages.length,

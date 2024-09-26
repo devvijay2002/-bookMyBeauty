@@ -59,7 +59,7 @@ class _SignupFormState extends State<SignupForm> {
                                 if (loginController.croppedImagePath.isNotEmpty) {
                                   return Image.file(File(loginController.croppedImagePath.value));
                                 } else {
-                                  return Icon(Icons.person,size: 40,color: dimBlackColor,);
+                                  return const Icon(Icons.person,size: 40,color: dimBlackColor,);
                                 }
                               })
 

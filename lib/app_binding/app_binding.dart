@@ -3,6 +3,7 @@ import 'package:bookmybeauty/screens/home_screen/controller/saloon_list_controll
 import 'package:bookmybeauty/screens/login_screen/controller/login_controller.dart';
 import 'package:get/get.dart';
 import '../screens/guide_screens/controller/guide_tour_controller.dart';
+import '../screens/my_account/controller/my_account_controller.dart';
 
 class AppBinding implements Bindings {
 
@@ -14,5 +15,6 @@ class AppBinding implements Bindings {
     Get.lazyPut<GuideTourController>(() => GuideTourController());
     Get.lazyPut<HomeController>(() => HomeController());
     Get.lazyPut<SaloonListController>(() => SaloonListController());
+    Get.lazyPut<MyAccountController>(() => MyAccountController());
     }
 }

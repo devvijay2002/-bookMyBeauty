@@ -10,12 +10,14 @@ class KCustomButton extends StatelessWidget {
         this.isOutline = false,
         this.textStyle,
         this.verticalPadding,
+        this.horizontalPadding,
         this.radius,
         this.heightFactor =1/19,
         this.iconChild});
   final String buttonText;
   final double heightFactor;
   final double? verticalPadding;
+  final double? horizontalPadding;
   final double? radius;
   final TextStyle? textStyle;
   final Widget? iconChild;
@@ -29,13 +31,13 @@ class KCustomButton extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: isOutline
-              ? null
+              ? Colors.white
               : gradient == null
               ? kPrimaryColor
               : null,
           borderRadius: BorderRadius.circular(radius ??8),
           border: isOutline ? Border.all(color: kPrimaryColor) : null,
-          gradient: gradient ?? kPrimaryGradient,
+          gradient:isOutline?null : gradient ?? kPrimaryGradient,
           boxShadow: isOutline
               ? null
               : [
@@ -47,7 +49,7 @@ class KCustomButton extends StatelessWidget {
           ],
         ),
         child: Padding(
-          padding:  EdgeInsets.symmetric(horizontal: 5,vertical: verticalPadding ?? 14),
+          padding:  EdgeInsets.symmetric(horizontal: horizontalPadding ?? 5,vertical: verticalPadding ?? 14),
           child: Center(
             child: iconChild == null
                 ? Text(
