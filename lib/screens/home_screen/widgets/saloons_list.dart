@@ -1,5 +1,4 @@
 
-import 'dart:developer';
 
 import 'package:bookmybeauty/screens/home_screen/controller/saloon_list_controller.dart';
 import 'package:expandable_page_view/expandable_page_view.dart';

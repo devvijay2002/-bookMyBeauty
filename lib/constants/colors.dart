@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
   const Color kCardColor = Color(0xffF2F2F2);
   const Color dimGreyColor = Color(0xFFD3D3D3);
   const Color dimRedColor = Color(0xFFFFD6D6);
+  Color redAccent = Colors.redAccent.withOpacity(0.5);
   const Color blueAccent = Color(0xFF0008FF);
   const Color dimLightGreyScreen = Color(0xFFF5F5F5);
   const Color categoryScreenLightGrey = Color(0xFFF1F0F6);

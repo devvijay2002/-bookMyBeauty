@@ -1,15 +1,8 @@
-import 'dart:developer';
 import 'package:bookmybeauty/screens/login_screen/widgets/send_otp_form.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
-import '../../../../components/kcustom_button.dart';
-import '../../../../components/form_builder_text_form_field.dart';
 import '../../../../constants/colors.dart';
 import '../../../../constants/images.dart';
-import '../../../../util/util.dart';
-import '../../controller/login_controller.dart';
 
 class SendOtpView extends StatefulWidget {
   const SendOtpView({super.key});

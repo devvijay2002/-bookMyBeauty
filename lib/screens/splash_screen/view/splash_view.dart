@@ -1,8 +1,7 @@
 import 'package:bookmybeauty/constants/images.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../search_saloons_screen/view/saloon_details.dart';
-import '../../search_saloons_screen/view/seach_saloons.dart';
+import '../../saloon_details/view/saloon_details.dart';
 
 
 

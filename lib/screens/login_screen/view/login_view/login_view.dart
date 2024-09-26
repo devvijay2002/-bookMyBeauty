@@ -1,7 +1,6 @@
 import 'package:bookmybeauty/constants/colors.dart';
 import 'package:bookmybeauty/constants/images.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import '../../controller/login_controller.dart';
 import '../../widgets/login_form.dart';
