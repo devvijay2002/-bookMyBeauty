@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../beauty_services/beauty_services_details_view/view/beauty_services_details.dart';
 import '../../nearby_saloons/view/nearby_saloons.dart';
+import '../../youtube_player/view/youtube_player.dart';
 
 
 class SplashView extends StatefulWidget {

@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:bookmybeauty/constants/images.dart';
 import 'package:bookmybeauty/screens/home_screen/widgets/home_app_bar.dart';
 import 'package:bookmybeauty/screens/home_screen/widgets/services_list.dart';
+import 'package:bookmybeauty/screens/youtube_player/view/youtube_player.dart';
 import 'package:bookmybeauty/shared/image_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -92,6 +93,11 @@ class _HomeViewState extends State<HomeView> {
                   )
               ),
             ),
+
+       /*    const Padding(
+             padding: EdgeInsets.all(16.0),
+             child: YoutubePlays(),
+           )*/
 
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16,vertical: 20),

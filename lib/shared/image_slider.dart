@@ -17,7 +17,7 @@ class ImageSliderState extends State<ImageSlider> {
   final CarouselSliderController carouselController = CarouselSliderController();
     var sharedController = Get.find<SharedController>();
 
-  var indexx = 0;
+
 
   @override
   Widget build(BuildContext context) {
