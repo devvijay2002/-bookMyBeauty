@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
   const Color secondaryColor = Color(0xFF27AEB7);
   const Color dimWhite = Colors.white70;
   const Color dimBlackColor = Colors.black54;
+  Color dimBlackColor2 = Colors.black54.withOpacity(0.65);
   const Color blueColor = Colors.blueAccent;
   const Color kPrimaryColor = Color(0xffB81217);
   const Color kCardColor = Color(0xffF2F2F2);

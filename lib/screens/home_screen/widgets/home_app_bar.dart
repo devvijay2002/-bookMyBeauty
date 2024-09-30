@@ -12,9 +12,9 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return GlobalAppBar(
       backgroundColor: Colors.white,
-      centerTitle: true,  leading: const Icon(
+      centerTitle: true,  leading: Icon(
       Icons.line_weight_outlined,
-      color: dimBlackColor, // Define dim_black_color separately
+      color: dimBlackColor2, // Define dim_black_color separately
       size: 30,
       ),
       title: Row(
@@ -39,41 +39,22 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
         ],
       ),
-
       actions: [
         Padding(
           padding: const EdgeInsets.only(right: 10.0),
           child: Icon(
             Icons.search,
             size: Get.width * 0.06,
-            color: dimBlackColor,
+            color: dimBlackColor2,
           ),
         ),
-        Container(
-          padding: const EdgeInsets.all(7),
-          margin: const EdgeInsets.only(right: 5),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(100.0),
-            color: Colors.white,
-            border: Border.all(
-              color: dimBlackColor,
-              width: 2.0,
-            ),
-          ),
-          child: ClipOval(
-            child: Icon(
-              Icons.person,
-              size: Get.width * 0.04,
-              color: dimBlackColor,
-            ),
-          ),
-        ),
+         const Icon(Icons.notifications,color: kPrimaryColor,),
         Padding(
           padding: const EdgeInsets.only(right: 14.0, left: 8),
           child: Icon(
             Icons.shopping_cart,
             size: Get.width * 0.07,
-            color: dimBlackColor,
+            color: dimBlackColor2,
           ),
         ),
       ],

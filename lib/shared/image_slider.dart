@@ -49,9 +49,6 @@ class ImageSliderState extends State<ImageSlider> {
             viewportFraction: 1,
             onPageChanged: (index, reason) {
               sharedController.updateImageIndex(index: index);
-           /*   setState(() {
-                indexx = index;
-              });*/
             },
           ),
         ),
@@ -64,8 +61,8 @@ class ImageSliderState extends State<ImageSlider> {
                   return GestureDetector(
                     onTap: () => carouselController.animateToPage(entry.key),
                     child: Container(
-                      width: sharedController.currentIndex.value == entry.key ? 11 : 11,
-                      height: 11.0,
+                      width: Get.width/360*10,
+                      height: Get.width/360*10,
                       margin: const EdgeInsets.symmetric(horizontal: 6.0, vertical: 5),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
