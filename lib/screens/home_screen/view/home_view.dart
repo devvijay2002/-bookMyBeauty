@@ -1,9 +1,8 @@
 import 'dart:developer';
-
-import 'package:bookmybeauty/constants/colors.dart';
 import 'package:bookmybeauty/constants/images.dart';
 import 'package:bookmybeauty/screens/home_screen/widgets/home_app_bar.dart';
 import 'package:bookmybeauty/screens/home_screen/widgets/services_list.dart';
+import 'package:bookmybeauty/shared/image_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../components/ktoggle_button.dart';
@@ -31,19 +30,21 @@ class _HomeViewState extends State<HomeView> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    decoration: const BoxDecoration(
-                        gradient: kPrimaryGradient,
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
-                    height: Get.height * 0.16,
-                  ),
-                  const SizedBox(height: 20),
-                  const Row(
+               ImageSlider(
+                 imagesList: [
+                 saloonImage,
+                 saloonImage,
+                 saloonImage,
+                 saloonImage,
+                 saloonImage,
+               ]),
+                  SizedBox(height: 20),
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
@@ -53,16 +54,16 @@ class _HomeViewState extends State<HomeView> {
                       KToggleButton(),
                     ],
                   ),
-                  const SizedBox(height: 20),
-                  const SaloonTypeWidget(),
-                  const TrendingServiceWidget(
+                  SizedBox(height: 20),
+                  SaloonTypeWidget(),
+                  TrendingServiceWidget(
                     serviceImages: [
                       girlImage,
                       girlImage,
                       girlImage,
                     ],
                   ),
-                  const ServiceListWidget(
+                  ServiceListWidget(
                     serviceImages: [
                       girlImage2,
                       girlImage2,
