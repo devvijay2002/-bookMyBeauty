@@ -33,7 +33,7 @@ class LeftDrawer extends StatelessWidget {
               ),
 
               DrawerItems(
-                'Lead List',
+                'Profile',
                 imageUrl: "assets/icons/tile_first_icon.png",
                     () {
                   Navigator.pop(context);
@@ -42,7 +42,7 @@ class LeftDrawer extends StatelessWidget {
                 },
               ),
               DrawerItems(
-                'Approval Dashboard',
+                'Appointments',
                 imageUrl: "assets/icons/tile_second_icon.png",
                     () {
                   Navigator.pop(context);
@@ -50,7 +50,7 @@ class LeftDrawer extends StatelessWidget {
                 },
               ),
               DrawerItems(
-                'Team Members',
+                'Blog',
                 imageUrl: "assets/icons/tile_second_icon.png",
                     () {
                   Navigator.pop(context);
@@ -58,7 +58,7 @@ class LeftDrawer extends StatelessWidget {
                 },
               ),
               DrawerItems(
-                'ETR Reports',
+                'Contact Us',
                 imageUrl: "assets/icons/tile_third_icon.png",
                     () {
                   Navigator.pop(context);
@@ -66,7 +66,15 @@ class LeftDrawer extends StatelessWidget {
                 },
               ),
               DrawerItems(
-                'Reference Guide',
+                'Latest Videos',
+                imageUrl: "assets/icons/tile_fourth_icon.png",
+                    () {
+                  Navigator.pop(context);
+
+                },
+              ),
+              DrawerItems(
+                'Settings',
                 imageUrl: "assets/icons/tile_fourth_icon.png",
                     () {
                   Navigator.pop(context);
