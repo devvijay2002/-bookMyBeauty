@@ -35,46 +35,44 @@ class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: AppBar(
-        backgroundColor: backgroundColor,
-        elevation: 0,
-        systemOverlayStyle: const SystemUiOverlayStyle(
-            statusBarColor: Colors.transparent,
-            statusBarIconBrightness: Brightness.dark),
-        centerTitle: centerTitle,
-        bottom: bottom,
-        flexibleSpace: Container(
-          decoration: backgroundColor !=null ?
-          BoxDecoration(
-           color: backgroundColor
-          ) :
-          const BoxDecoration(
-          gradient: kPrimaryGradient
-          ),
+    return AppBar(
+      backgroundColor: backgroundColor,
+      elevation: 0,
+      systemOverlayStyle: const SystemUiOverlayStyle(
+          statusBarColor: Colors.transparent,
+          statusBarIconBrightness: Brightness.dark),
+      centerTitle: centerTitle,
+      bottom: bottom,
+      flexibleSpace: Container(
+        decoration: backgroundColor !=null ?
+        BoxDecoration(
+         color: backgroundColor
+        ) :
+        const BoxDecoration(
+        gradient: kPrimaryGradient
         ),
-        leading: leading ??
-            IconButton(
-              icon: Container(
-                padding: const EdgeInsets.all(8),
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(50))),
-                  child: const Icon(
-                    Icons.arrow_back_ios_new,
-                    color: kPrimaryColor,
-                    size: 16,
-                  ),
-              ),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-        title:  title,
-        titleTextStyle: backgroundColor ==null ?
-        const TextStyle(color: Colors.white,fontSize: 17) : null,
-        actions: actions,
       ),
+      leading: leading ??
+          IconButton(
+            icon: Container(
+              padding: const EdgeInsets.all(8),
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.all(Radius.circular(50))),
+                child: const Icon(
+                  Icons.arrow_back_ios_new,
+                  color: kPrimaryColor,
+                  size: 16,
+                ),
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+      title:  title,
+      titleTextStyle: backgroundColor ==null ?
+      const TextStyle(color: Colors.white,fontSize: 17) : null,
+      actions: actions,
     );
   }
 }

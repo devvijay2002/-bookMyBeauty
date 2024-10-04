@@ -2,11 +2,11 @@ import 'dart:developer';
 import 'package:bookmybeauty/constants/images.dart';
 import 'package:bookmybeauty/screens/home_screen/widgets/home_app_bar.dart';
 import 'package:bookmybeauty/screens/home_screen/widgets/services_list.dart';
-import 'package:bookmybeauty/screens/youtube_player/view/youtube_player.dart';
 import 'package:bookmybeauty/shared/image_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../components/ktoggle_button.dart';
+import '../../../shared/left_drawer.dart';
 import '../widgets/saloon_type.dart';
 import '../widgets/saloons_list.dart';
 import '../widgets/trending_services.dart';
@@ -21,13 +21,17 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-
+  final GlobalKey<ScaffoldState> homeScaffoldKey = GlobalKey<ScaffoldState>();
+  final GlobalKey leftDrawer = GlobalKey();
   @override
   Widget build(BuildContext context) {
     log("build method called");
     return Scaffold(
+      key: homeScaffoldKey,
       backgroundColor: Colors.white,
-      appBar: const HomeAppBar(),
+      appBar: HomeAppBar(
+        homeScaffoldKey: homeScaffoldKey,
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -112,6 +116,7 @@ class _HomeViewState extends State<HomeView> {
           ],
         ),
       ),
+      drawer: LeftDrawer(key: leftDrawer),
     );
   }
 }

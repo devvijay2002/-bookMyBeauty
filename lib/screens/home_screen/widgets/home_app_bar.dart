@@ -6,16 +6,23 @@ import 'package:get/get.dart';
 import '../../../shared/globle_app_bar.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const HomeAppBar({super.key});
+  final GlobalKey<ScaffoldState> homeScaffoldKey;
+  const HomeAppBar({super.key,required this.homeScaffoldKey});
 
   @override
   Widget build(BuildContext context) {
     return GlobalAppBar(
       backgroundColor: Colors.white,
-      centerTitle: true,  leading: Icon(
-      Icons.line_weight_outlined,
-      color: dimBlackColor2, // Define dim_black_color separately
-      size: 30,
+      centerTitle: true,
+      leading: GestureDetector(
+        onTap: () {
+       homeScaffoldKey.currentState!.openDrawer();
+        },
+        child: Icon(
+        Icons.line_weight_outlined,
+        color: dimBlackColor2, // Define dim_black_color separately
+        size: 30,
+        ),
       ),
       title: Row(
         mainAxisAlignment: MainAxisAlignment.start,
