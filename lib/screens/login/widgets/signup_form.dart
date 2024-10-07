@@ -1,6 +1,5 @@
 import 'dart:developer';
 import 'dart:io';
-import 'package:bookmybeauty/screens/login_screen/controller/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
@@ -11,6 +10,7 @@ import '../../../components/form_builder_text_form_field.dart';
 import '../../../components/kcustom_outline_button_primary.dart';
 import '../../../constants/colors.dart';
 import '../../../shared/custom_popups/main_class/custom_popups.dart';
+import '../controller/login_controller.dart';
 
 
 class SignupForm extends StatefulWidget {

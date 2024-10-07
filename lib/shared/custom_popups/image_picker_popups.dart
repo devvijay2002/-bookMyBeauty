@@ -1,6 +1,4 @@
 import 'dart:developer';
-
-import 'package:bookmybeauty/screens/login_screen/controller/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,6 +8,7 @@ import 'package:permission_handler/permission_handler.dart';
 
 import '../../components/kcustom_button.dart';
 import '../../constants/colors.dart';
+import '../../screens/login/controller/login_controller.dart';
 
 class ImagePickerPopup extends StatefulWidget {
   const ImagePickerPopup({super.key, this.text, this.onSaveFunction});

@@ -1,8 +1,8 @@
-import 'package:bookmybeauty/constants/colors.dart';
-import 'package:bookmybeauty/screens/login_screen/widgets/reset_password_form.dart';
+
+import 'package:bookmybeauty/screens/forgot_password/widgets/reset_password_form.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import '../../../../constants/colors.dart';
 import '../../../../constants/images.dart';
 
 

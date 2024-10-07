@@ -1,9 +1,9 @@
-import 'package:bookmybeauty/screens/home_screen/controller/home_controller.dart';
-import 'package:bookmybeauty/screens/home_screen/controller/saloon_list_controller.dart';
-import 'package:bookmybeauty/screens/login_screen/controller/login_controller.dart';
 import 'package:get/get.dart';
 import '../global_controllers/shared_controller.dart';
-import '../screens/guide_screens/controller/guide_tour_controller.dart';
+import '../screens/guide_tour/controller/guide_tour_controller.dart';
+import '../screens/home/controller/home_controller.dart';
+import '../screens/home/controller/saloon_list_controller.dart';
+import '../screens/login/controller/login_controller.dart';
 import '../screens/my_account/controller/my_account_controller.dart';
 
 class AppBinding implements Bindings {

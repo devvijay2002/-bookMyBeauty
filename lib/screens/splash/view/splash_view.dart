@@ -1,12 +1,8 @@
 import 'package:bookmybeauty/constants/images.dart';
-import 'package:bookmybeauty/screens/home_screen/view/home_view.dart';
-import 'package:bookmybeauty/screens/saloon_details/view/saloon_details.dart';
-import 'package:bookmybeauty/screens/search_saloons/view/seach_saloons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../beauty_services/beauty_services_details_view/view/beauty_services_details.dart';
-import '../../nearby_saloons/view/nearby_saloons.dart';
-import '../../youtube_player/view/youtube_player.dart';
+import '../../home/view/home_view.dart';
+
 
 
 class SplashView extends StatefulWidget {

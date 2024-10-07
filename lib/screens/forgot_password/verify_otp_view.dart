@@ -1,42 +1,40 @@
-import 'package:bookmybeauty/screens/login_screen/widgets/send_otp_form.dart';
+
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../constants/colors.dart';
 import '../../../../constants/images.dart';
+import 'widgets/otp_form.dart';
 
-class SendOtpView extends StatefulWidget {
-  const SendOtpView({super.key});
+class VerifyOtpView extends StatefulWidget {
+  const VerifyOtpView({super.key});
 
   @override
-  State<SendOtpView> createState() => _SendOtpViewState();
+  State<VerifyOtpView> createState() => _VerifyOtpViewState();
 }
 
-class _SendOtpViewState extends State<SendOtpView> {
+class _VerifyOtpViewState extends State<VerifyOtpView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kPrimaryColor,
-      // Prevent resizing when the keyboard opens
       resizeToAvoidBottomInset: false,
-
+      backgroundColor: kPrimaryColor,
       body: Stack(
         children: [
-          // Fixed background image (non-scrollable)
+          // Background image
           Positioned.fill(
             child: Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: AssetImage(loginBg),
+                  image: AssetImage(loginBg), // Your background image path
                 ),
               ),
             ),
           ),
-
-          // Foreground content (logo, title, and scrollable form)
+          // Foreground content
           Column(
             children: [
-              // Top section (logo and title), which is not scrollable
               Padding(
                 padding: EdgeInsets.only(top: Get.height * 0.03),
                 child: Row(
@@ -45,12 +43,8 @@ class _SendOtpViewState extends State<SendOtpView> {
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      icon: const Icon(
-                        Icons.arrow_back_sharp,
-                        color: Colors.white,
-                        size: 30,
-                      ),
-                    )
+                      icon: const Icon(Icons.arrow_back_sharp, color: Colors.white, size: 30),
+                    ),
                   ],
                 ),
               ),
@@ -72,11 +66,9 @@ class _SendOtpViewState extends State<SendOtpView> {
                 ),
               ),
               const SizedBox(height: 20),
-
-              // The scrollable form section
               Expanded(
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
                   decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
@@ -84,20 +76,30 @@ class _SendOtpViewState extends State<SendOtpView> {
                       topRight: Radius.circular(18),
                     ),
                   ),
-                  child: SingleChildScrollView(
-                    // This ensures that the form content is scrollable
-                    child: Padding(
-                      padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-                      child: const Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          SizedBox(height: 40),
-                          Text("Reference site about giving information",style: TextStyle(fontSize: 17),),
-                          SizedBox(height: 30),
-                          SendOtpForm(),
-                        ],
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 30),
+                      const Text(
+                        'Verify Your OTP',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
+                      const SizedBox(height: 13),
+                      const Text(
+                        'Enter Your 4 Digits OTP',
+                        style: TextStyle(
+                          fontSize: 17,
+                        ),
+                      ),
+                      const SizedBox(height: 30),
+                      Expanded(
+                        child: SingleChildScrollView(
+                          child: OtpForm(), // Your OTP form widget
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),

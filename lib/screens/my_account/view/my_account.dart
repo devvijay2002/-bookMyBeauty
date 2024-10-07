@@ -1,15 +1,10 @@
 import 'dart:io';
-
-import 'package:bookmybeauty/screens/login_screen/controller/login_controller.dart';
 import 'package:bookmybeauty/screens/my_account/controller/my_account_controller.dart';
 import 'package:bookmybeauty/shared/globle_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-
 import '../../../components/kwidgets.dart';
 import '../../../constants/colors.dart';
-import '../../../constants/images.dart';
 import '../../../shared/custom_popups/main_class/custom_popups.dart';
 
 class MyAccountView extends StatefulWidget {

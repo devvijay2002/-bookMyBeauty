@@ -1,16 +1,13 @@
 
 
-import 'package:bookmybeauty/screens/home_screen/controller/saloon_list_controller.dart';
 import 'package:expandable_page_view/expandable_page_view.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-
 import '../../../components/kcustom_button.dart';
 import '../../../components/ktext_form_field.dart';
 import '../../../constants/colors.dart';
 import '../../../constants/images.dart';
+import '../controller/saloon_list_controller.dart';
 
 class SaloonsListWidget extends StatefulWidget {
   const SaloonsListWidget({super.key});

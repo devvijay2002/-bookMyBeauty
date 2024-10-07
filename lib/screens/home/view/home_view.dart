@@ -1,14 +1,14 @@
 import 'dart:developer';
 import 'package:bookmybeauty/constants/images.dart';
-import 'package:bookmybeauty/screens/home_screen/widgets/home_app_bar.dart';
-import 'package:bookmybeauty/screens/home_screen/widgets/services_list.dart';
 import 'package:bookmybeauty/shared/image_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../components/ktoggle_button.dart';
 import '../../../shared/left_drawer.dart';
+import '../widgets/home_app_bar.dart';
 import '../widgets/saloon_type.dart';
 import '../widgets/saloons_list.dart';
+import '../widgets/services_list.dart';
 import '../widgets/trending_services.dart';
 import '../widgets/video_card_widget.dart';
 

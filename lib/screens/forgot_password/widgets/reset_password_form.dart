@@ -1,10 +1,11 @@
-import 'package:bookmybeauty/screens/login_screen/controller/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
-import '../../../components/kcustom_button.dart';
-import '../../../components/form_builder_text_form_field.dart';
+import '../../../../../components/kcustom_button.dart';
+import '../../../../../components/form_builder_text_form_field.dart';
+import '../../login/controller/login_controller.dart';
+
 
 
 class ForgotPasswordForm extends StatefulWidget {

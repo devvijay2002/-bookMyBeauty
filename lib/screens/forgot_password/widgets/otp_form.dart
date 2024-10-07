@@ -1,9 +1,9 @@
-import 'package:bookmybeauty/components/kcustom_button.dart';
-import 'package:bookmybeauty/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-import '../../../routes/routes.dart';
+import '../../../../../components/kcustom_button.dart';
+import '../../../../../constants/colors.dart';
+import '../../../../../routes/routes.dart';
 
 
 class OtpForm extends StatefulWidget {
