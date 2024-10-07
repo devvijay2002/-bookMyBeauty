@@ -2,6 +2,9 @@
 const String nextButtonBg = "assets/icons/next_button_bg.png";
 const String nextButtonBg2 = "assets/icons/next_button_bg2.png";
 const String twitterIcon ="assets/icons/twitter_icon.png";
+const String rocketIcon ="assets/icons/rocket_icon_aboutus.png";
+const String lightIcon ="assets/icons/light_icon_aboutus.png";
+const String diamondIcon ="assets/icons/diamond_icon_aboutus.png";
 
 
 // Images
@@ -11,12 +14,13 @@ const String gdTourImage3 = "assets/images/gd_tour_image3.png";
 const String loginBg = "assets/images/login_bg.png";
 const String splashBackground = "assets/images/splash_background.png";
 const String thanksBg = "assets/images/mobile_background.jpg";
-const String thanksYouImange = "assets/images/folded_hand_thank_you.png";
+const String thanksYouImage = "assets/images/folded_hand_thank_you.png";
 const String geoLocationImage = "assets/images/geolocation_image.png";
 const String noInternetImage = "assets/images/no_internet_image.png";
 const String alertImage = "assets/images/alert.png";
 const String cartImage ="assets/images/cart.png";
 const String blogImage ="assets/images/blog_image.png";
+const String demoOurBlogs = "assets/icons/our_blogs_demo_image.png";
 
 
 //svg

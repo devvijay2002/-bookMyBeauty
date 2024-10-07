@@ -8,6 +8,8 @@ class Routes {
   static const String noInternet ="/noInternet";
   static const String enableGeoLocation1 = "/enableGeoLocation1";
   static const String addToCart = "/addToCart";
-  static const String checkout = "/checkout";
+  static const String checkout = "/checkOut";
   static const String appointmentRoute = "/appointment";
+  static const String blogDetailsRoute = "/blogDetails";
+  static const String aboutUsRoute = "/aboutUs";
 }

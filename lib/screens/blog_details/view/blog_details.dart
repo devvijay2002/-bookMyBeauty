@@ -2,8 +2,9 @@ import 'package:bookmybeauty/shared/globle_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:url_launcher/url_launcher.dart';
-
+import 'package:share_plus/share_plus.dart';
 import '../../../constants/images.dart';
+
 
 class blogDetailsRoute extends StatefulWidget {
   const blogDetailsRoute({super.key});
@@ -32,7 +33,7 @@ class _blogDetailsRouteState extends State<blogDetailsRoute> {
                 children: [
                   const Expanded(
                     flex: 7,
-                    child: Text("Do's and Don'ts after a Medi Facial | Rasaderm",
+                    child: Text("Do's and Don't after a Medi Facial | Rasaderm",
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold
@@ -43,7 +44,7 @@ class _blogDetailsRouteState extends State<blogDetailsRoute> {
                     children: [
                       GestureDetector(
                         onTap: () {
-
+                          Share.share('Check out this link: https://example.com');
                           print("share button pressed");
                         },
                         child: SvgPicture.asset(shareIconSvg,
@@ -98,15 +99,22 @@ class _blogDetailsRouteState extends State<blogDetailsRoute> {
                       SizedBox(width: 3,),
                       GestureDetector(
                         onTap: () async {
-                          const whatsappUrl = "whatsapp://send?text=Hello%20World";
+                          const whatsappUrl = "https://wa.me/918583065690/?text=Welcom to Book my Beauty ";
                           // Checking if WhatsApp is installed on the device
-                          if (await canLaunchUrl(Uri.parse(whatsappUrl))) {
-                            await launchUrl(Uri.parse(whatsappUrl));
-                          } else {
-                            print("Could not launch WhatsApp. Please ensure it's installed on your device.");
-                            // You can show an error message to the user
+                          try {
+                            // Checking if WhatsApp can be launched
+                            if (await canLaunchUrl(Uri.parse(whatsappUrl))) {
+                              await launchUrl(Uri.parse(whatsappUrl), mode: LaunchMode.externalApplication);
+                            } else {
+                              print("Could not launch WhatsApp. Please ensure it's installed on your device.");
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text("WhatsApp is not installed")),
+                              );
+                            }
+                          } catch (e) {
+                            print("Error occurred: $e");
                             ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text("WhatsApp is not installed")),
+                              SnackBar(content: Text("An error occurred while trying to open WhatsApp")),
                             );
                           }
                           print("whatsup Icon pressed");

@@ -33,7 +33,7 @@ class _ThanksViewState extends State<ThanksView> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              thanksYouImange, // Replace with your image path
+              thanksYouImage, // Replace with your image path
               width: 100, // Set the desired width
               height: 100, // Set the desired height
             ),

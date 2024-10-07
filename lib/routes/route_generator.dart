@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 import 'package:bookmybeauty/routes/routes.dart';
 import 'package:flutter/cupertino.dart';
+import '../screens/about_us/view/about_us.dart';
 import '../screens/add_to_cart/view/add_to_cart.dart';
 import '../screens/appointment/view/appointment.dart';
 import '../screens/blog_details/view/blog_details.dart';
@@ -11,6 +12,7 @@ import '../screens/enable_geo_location_screen/view/enable_geo_location.dart';
 import '../screens/guide_screens/view/guide_view.dart';
 import '../screens/login_screen/view/login_view.dart';
 import '../screens/no_internet_screen/view/no_internet.dart';
+import '../screens/our_blogs/view/our_blogs.dart';
 import '../screens/splash_screen/view/splash_view.dart';
 import '../screens/thanks_screen/view/thanks.dart';
 import '../screens/thanks_screen/view/thanks.dart';
@@ -38,7 +40,19 @@ class RouteGenerator {
     }
 
     switch (settings.name) {
+
       case "/":
+        return navigateToScreen(
+          settings: settings,
+          route:   OurBlogsRoutes(),
+        );
+
+        case Routes.aboutUsRoute:
+        return navigateToScreen(
+          settings: settings,
+          route:   aboutUsRoute(),
+        );
+        case Routes.blogDetailsRoute:
         return navigateToScreen(
           settings: settings,
           route:   blogDetailsRoute(),
