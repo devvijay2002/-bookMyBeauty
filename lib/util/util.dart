@@ -5,4 +5,8 @@ class Util{
     final phoneRegex = RegExp(r'^(?:[+0]9)?[0-9]{10}$');
     return phoneRegex.hasMatch(input);
   }
+  static String returnExceptionMsg(String exception){
+    var errorMessage = exception.toString().replaceFirst('Exception: ', '');
+    return errorMessage;
+  }
 }

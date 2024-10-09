@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:bookmybeauty/api_service/auth_api.dart';
 import 'package:bookmybeauty/components/form_builder_text_form_field.dart';
 import 'package:bookmybeauty/components/kcustom_button.dart';
 import 'package:bookmybeauty/constants/colors.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
+import '../../../shared/kcustom_loading_popup.dart';
 import '../../../util/util.dart';
 import '../controller/login_controller.dart';
 
@@ -16,6 +18,8 @@ class LoginForm extends StatefulWidget {
   @override
   State<LoginForm> createState() => _LoginFormState();
 }
+
+
 
 class _LoginFormState extends State<LoginForm> {
   final LoginController loginController = Get.find<LoginController>();
@@ -94,7 +98,7 @@ class _LoginFormState extends State<LoginForm> {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, Routes.homeViewRoute);
+                  Navigator.pushNamed(context, Routes.sendOtpRoute);
                 },
                 child: const Padding(
                   padding: EdgeInsets.only(right: 12.0),
@@ -107,10 +111,12 @@ class _LoginFormState extends State<LoginForm> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: KCustomButton(
-              onTap: () {
+              onTap: ()async{
               /*  _formKey.currentState?.saveAndValidate();
                 debugPrint(_formKey.currentState?.value.toString());*/
-                Navigator.pushNamed(context, Routes.homeViewRoute);
+              //  Navigator.pushNamed(context, Routes.homeViewRoute);
+                //Get.dialog(const ShowLoadingPopup());
+               await AuthAPI.registerUser();
               },
               iconChild: const Icon(Icons.arrow_forward,color: Colors.white),
               buttonText: "Login",

@@ -23,3 +23,9 @@ const String bookAppointmentBackground = "assets/images/book_appointment.png";
 
 //svg
 const String appLogoTransparentSvg = "assets/svg/app_logo_transparent.svg";
+
+//animations
+
+const String loading ="assets/animations/loading.json";
+const String loading2 ="assets/animations/loading2.json";
+const String loading3 ="assets/animations/loading3.json";

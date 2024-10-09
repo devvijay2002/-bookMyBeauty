@@ -31,6 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
   get: ^4.6.6
+  http: ^1.2.2
   google_fonts: ^6.2.1
   flutter_form_builder: ^9.4.1
   form_builder_validators: ^11.0.0
@@ -43,6 +44,10 @@ dependencies:
   carousel_slider: ^5.0.0
   permission_handler: ^11.3.1
   youtube_player_flutter: ^9.1.1
+  flutter_secure_storage: ^9.2.2
+  lottie: ^3.1.2
+  jwt_decoder: ^2.0.1
+
 
 
 
@@ -77,6 +82,7 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/svg/
+    - assets/animations/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

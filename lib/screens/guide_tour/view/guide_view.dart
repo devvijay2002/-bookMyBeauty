@@ -106,8 +106,8 @@ class GuideTourScreen extends StatelessWidget {
                   if (guideTourController.currentPage.value == guideData.length - 1) {
               //      Navigator.pushNamed(context, Routes.loginPageRoute);
                     Get.off(() => const LoginView(),
-                      transition: Transition.fadeIn, // Choose the desired transition
-                      duration: const Duration(milliseconds: 700), // Optional: Customize the duration
+                      transition: Transition.fadeIn,
+                      duration: const Duration(milliseconds: 900),
                     );
                   } else {
                     guideTourController.nextPage();
