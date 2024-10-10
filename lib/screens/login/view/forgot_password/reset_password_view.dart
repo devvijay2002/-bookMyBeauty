@@ -1,5 +1,4 @@
-
-import 'package:bookmybeauty/screens/forgot_password/widgets/reset_password_form.dart';
+import 'package:bookmybeauty/screens/login/view/forgot_password/widgets/reset_password_form.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../constants/colors.dart';
@@ -54,7 +53,7 @@ class ResetPasswordViewState extends State<ResetPasswordView> {
                 height: Get.height * 0.13,
                 child: const Image(
                   fit: BoxFit.cover,
-                  image: AssetImage("assets/icons/app_logo_png.png"),
+                  image: AssetImage(appLogoPng),
                 ),
               ),
               const SizedBox(height: 10),

@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:bookmybeauty/api_service/session_api.dart';
 import 'package:bookmybeauty/local_storage/local_storage.dart';
 import 'package:bookmybeauty/local_storage/local_storage_keys.dart';
@@ -8,8 +7,9 @@ import '../constants/api_routes.dart';
 import 'base_api_service/base_api_service.dart';
 
 class AuthAPI {
-  static Future<String> registerUser()async{
+  static Future<void> registerUser({required Map<String, dynamic> data})async{
     try{
+      log("data $data");
       await SessionAPI.verifyUserSession();
       log("readFromLocalStorage");
       var userSession = await LocalStorage.readFromLocalStorage(key: userSessionKey);
@@ -18,33 +18,129 @@ class AuthAPI {
             apiURL: registerUserAPI,
             header:{
               "session_token" :userSession,
-              "Content-Type": "application/json"},
-            data: {
-              "name": "Raushan Raj",
-              "email": "abymemp93@gmail.com",
-              "mobile": "9898909098",
-              "gender": 0,
-              "password": "Raushan@12"
-            }
+              'Content-Type': 'application/json'
+              },
+            data: data
         );
         log("responseBody $responseBody");
-        if (responseBody['data'] != null) {
-          String result = responseBody['data']['sessionToken'];
-          return result;
-        }
       }else{
         KCustomSnackBar(
           type: 'error',
           message: "Session has been expired"
         );
       }
-
     }catch (e){
       log("error ${e.toString()}");
     }
-    return '';
+  }
+
+  static Future<void> login({required Map<String, dynamic> data})async{
+    try{
+
+      await SessionAPI.verifyUserSession();
+      log("readFromLocalStorage");
+      var userSession = await LocalStorage.readFromLocalStorage(key: userSessionKey);
+      log("data: $data");
+      if(userSession !=null){
+        var responseBody = await BaseAPIService.postRequest(
+            apiURL: loginUserAPI,
+            header:{
+              "session_token" :userSession,
+              'Content-Type': 'application/json'
+              },
+            data: data
+        );
+        log("responseBody $responseBody");
+      }else{
+        KCustomSnackBar(
+          type: 'error',
+          message: "Session has been expired"
+        );
+      }
+    }catch (e){
+      log("error ${e.toString()}");
+    }
   }
 
 
+  static Future<void> forgotPassword({required Map<String, dynamic> data})async{
+    try{
 
+      await SessionAPI.verifyUserSession();
+      log("readFromLocalStorage");
+      var userSession = await LocalStorage.readFromLocalStorage(key: userSessionKey);
+      log("data: $data");
+      if(userSession !=null){
+        var responseBody = await BaseAPIService.postRequest(
+            apiURL: forgotPasswordAPI,
+            header:{
+              "session_token" :userSession,
+              'Content-Type': 'application/json'
+            },
+            data: data
+        );
+        log("responseBody $responseBody");
+      }else{
+        KCustomSnackBar(
+            type: 'error',
+            message: "Session has been expired"
+        );
+      }
+    }catch (e){
+      log("error ${e.toString()}");
+    }
+  }
+  static Future<void> verifyOTP({required Map<String, dynamic> data})async{
+    try{
+
+      await SessionAPI.verifyUserSession();
+      log("readFromLocalStorage");
+      var userSession = await LocalStorage.readFromLocalStorage(key: userSessionKey);
+      log("data: $data");
+      if(userSession !=null){
+        var responseBody = await BaseAPIService.postRequest(
+            apiURL: verifyOtpAPI,
+            header:{
+              "session_token" :userSession,
+              'Content-Type': 'application/json'
+              },
+            data: data
+        );
+        log("responseBody $responseBody");
+      }else{
+        KCustomSnackBar(
+          type: 'error',
+          message: "Session has been expired"
+        );
+      }
+    }catch (e){
+      log("error ${e.toString()}");
+    }
+  }
+  static Future<void> resetPassword({required Map<String, dynamic> data})async{
+    try{
+      await SessionAPI.verifyUserSession();
+      log("readFromLocalStorage");
+      var userSession = await LocalStorage.readFromLocalStorage(key: userSessionKey);
+      log("data: $data");
+      if(userSession !=null){
+        var responseBody = await BaseAPIService.postRequest(
+            apiURL: resetPasswordAPI,
+            header:{
+              "session_token" :userSession,
+              'Content-Type': 'application/json'
+              },
+            data: data
+        );
+        log("responseBody $responseBody");
+      }else{
+        KCustomSnackBar(
+          type: 'error',
+          message: "Session has been expired"
+        );
+      }
+    }catch (e){
+      log("error ${e.toString()}");
+    }
+  }
 }

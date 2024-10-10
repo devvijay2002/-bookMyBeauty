@@ -1,9 +1,12 @@
 import 'dart:developer';
 import 'dart:io';
+import 'package:bookmybeauty/routes/routes.dart';
+import 'package:bookmybeauty/shared/kcustom_snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
+import '../../../api_service/auth_api.dart';
 import '../../../components/kcustom_button.dart';
 import '../../../components/kcustom_drop_down.dart';
 import '../../../components/form_builder_text_form_field.dart';
@@ -91,9 +94,9 @@ class _SignupFormState extends State<SignupForm> {
                 CustomTextFormField(
                   name: 'name',
                   labelText: 'Enter Name',
-                  prefixIcon: Icons.email,
+                  prefixIcon: Icons.person,
                   validator: FormBuilderValidators.required(),
-                  keyboardType: TextInputType.emailAddress,
+                  keyboardType: TextInputType.text,
                 ),
                 const SizedBox(height: 20),
                 const Text("Mobile Number"),
@@ -104,9 +107,23 @@ class _SignupFormState extends State<SignupForm> {
                   prefixIcon: Icons.wifi_calling_3_rounded,
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(),
+                    FormBuilderValidators.equalLength(10),
                     FormBuilderValidators.phoneNumber(),
                   ]),
                   keyboardType: TextInputType.phone,
+                ),
+                const SizedBox(height: 20),
+                const Text("Email"),
+                const SizedBox(height: 14),
+                CustomTextFormField(
+                  name: 'email',
+                  labelText: 'Enter Email ID',
+                  prefixIcon: Icons.mail,
+                  validator: FormBuilderValidators.compose([
+                    FormBuilderValidators.required(),
+                    FormBuilderValidators.email(),
+                  ]),
+                  keyboardType: TextInputType.emailAddress,
                 ),
                 const SizedBox(height: 20),
                 const Text("Gender"),
@@ -116,7 +133,7 @@ class _SignupFormState extends State<SignupForm> {
                   items: ['Male', 'Female', 'Other'],
                   initialValue: 'Male',
                   hintText: 'Choose your gender',
-                  prefixIcon: Icons.person,
+                  prefixIcon: Icons.person_2_outlined,
                 ),
                 const SizedBox(height: 20),
                 const Text("Password"),
@@ -131,7 +148,7 @@ class _SignupFormState extends State<SignupForm> {
                   },
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(),
-                    FormBuilderValidators.minLength(8),
+                    FormBuilderValidators.minLength(6),
                   ]),
                   keyboardType: TextInputType.text,
                 ),
@@ -159,10 +176,11 @@ class _SignupFormState extends State<SignupForm> {
                 return Checkbox(
                   value: loginController.agreeToTerms.value,
                   checkColor: Colors.white,
-                  activeColor: dimBlackColor,
+                  activeColor: dimBlackColor2,
                   onChanged: (value) {
                     loginController.updateAgreeToTerms(value!);
                   },
+
                 );
               }),
               const Text("I agree to the terms & conditions"),
@@ -185,10 +203,34 @@ class _SignupFormState extends State<SignupForm> {
                 const SizedBox(width: 30),
                 Expanded(
                   child: KCustomButton(
-                    onTap: () {
-                      log("password :${loginController.password.toString()}");
-                      _formKey.currentState?.saveAndValidate();
-                      debugPrint(_formKey.currentState?.value.toString());
+                    onTap: ()async{
+                      FocusScope.of(context).unfocus();
+                      Navigator.pushNamed(context, Routes.verifyOtpRoute,arguments: {
+                        'emailId' :"vijay@gmail.com"
+                      });
+               /*       if(_formKey.currentState!.saveAndValidate()) {
+                        if(loginController.agreeToTerms.value){
+                          CustomPopups.showCustomLoadingPopup(context: context);
+                          var value = _formKey.currentState?.value;
+                          log("value $value");
+                          var  data = {
+                            "name": value!["name"].toString(),
+                            "email":value["email"].toString(),
+                            "mobile": value["mobile"].toString(),
+                            "gender": value["gender"].toString()=="Male"?0:value["gender"].toString()=="Female"?1:2,
+                            "password": value["password"].toString()
+                          };
+                          await AuthAPI.registerUser(data: data);
+                          Navigator.pop(context);
+                          Navigator.pushNamed(context, Routes.verifyOtpRoute);
+                        }else{
+                          KCustomSnackBar(
+                            message: "Please Agree Terms & Conditions",
+                              type: 'Error'
+                          );
+                        }
+
+                      }*/
                     },
                     radius: 50,
                     iconChild: const Icon(Icons.arrow_forward, color: Colors.white, size: 17,),

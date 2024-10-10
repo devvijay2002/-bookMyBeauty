@@ -1,13 +1,14 @@
+import 'package:bookmybeauty/api_service/auth_api.dart';
+import 'package:bookmybeauty/shared/custom_popups/main_class/custom_popups.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-
 import '../../../../../components/kcustom_button.dart';
 import '../../../../../constants/colors.dart';
-import '../../../../../routes/routes.dart';
 
 
 class OtpForm extends StatefulWidget {
-  const OtpForm({super.key});
+  final String emailId;
+  const OtpForm({super.key,required this.emailId});
 
   @override
   State<OtpForm> createState() => _OtpFormState();
@@ -23,7 +24,6 @@ class _OtpFormState extends State<OtpForm> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 50.0),
           child: PinCodeTextField(
@@ -33,8 +33,8 @@ class _OtpFormState extends State<OtpForm> {
             pinTheme: PinTheme(
                 shape: PinCodeFieldShape.box,
                 inactiveColor: dimBlackColor,
-                activeColor: dimBlackColor,
-                selectedColor: kPrimaryColor,
+                activeColor: secondaryColor,
+                selectedColor: blueAccent,
                 fieldHeight: 50,
                 fieldWidth: 50,
                 borderRadius: BorderRadius.circular(3),
@@ -60,8 +60,17 @@ class _OtpFormState extends State<OtpForm> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: KCustomButton(
-            onTap: () {
-              Navigator.pushNamed(context, Routes.resetPasswordRoute);
+            onTap: ()async{
+           // Navigator.pushNamed(context, Routes.resetPasswordRoute);
+            if(_otpController.text.isNotEmpty){
+              CustomPopups.showCustomLoadingPopup(context: context);
+              var data ={
+                "email": widget.emailId,
+                "otp":_otpController.text.trim().toString()
+              };
+              await AuthAPI.verifyOTP(data: data);
+              Navigator.pop(context);
+            }
             },
             radius: 30,
             iconChild: const Icon(Icons.arrow_forward,color: Colors.white),

@@ -18,6 +18,7 @@ const String splashBackground2 = "assets/images/splash_bg.png";
 const String girlImage = "assets/images/girl_image.png";
 const String girlImage2 = "assets/images/girl2_image.png";
 const String saloonImage = "assets/images/saloon_image.png";
+const String appLogoPng = "assets/icons/app_logo_png.png";
 const String bookAppointmentBackground = "assets/images/book_appointment.png";
 
 

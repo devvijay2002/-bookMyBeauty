@@ -4,11 +4,13 @@ import 'package:bookmybeauty/components/form_builder_text_form_field.dart';
 import 'package:bookmybeauty/components/kcustom_button.dart';
 import 'package:bookmybeauty/constants/colors.dart';
 import 'package:bookmybeauty/routes/routes.dart';
+import 'package:bookmybeauty/shared/custom_popups/main_class/custom_popups.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 import '../../../shared/kcustom_loading_popup.dart';
+import '../../../shared/kcustom_snackbar.dart';
 import '../../../util/util.dart';
 import '../controller/login_controller.dart';
 
@@ -42,7 +44,7 @@ class _LoginFormState extends State<LoginForm> {
                 const SizedBox(height: 14),
                 Obx(() {
                   return CustomTextFormField(
-                    name: 'email',
+                    name: 'emailOrMobile',
                     labelText: 'Email or Mobile Number',
                     prefixIcon: loginController.isPhoneNumber.value ? Icons.phone : Icons.email,
                     onChanged: (s) {
@@ -57,7 +59,7 @@ class _LoginFormState extends State<LoginForm> {
                       FormBuilderValidators.required(),
                       loginController.isPhoneNumber.value ?FormBuilderValidators.phoneNumber() :FormBuilderValidators.email(),
                     ]),
-                    keyboardType: TextInputType.emailAddress,
+                    keyboardType: TextInputType.text,
                   );
                 }),
                 const SizedBox(height: 20),
@@ -70,9 +72,8 @@ class _LoginFormState extends State<LoginForm> {
                   isPassword: true,
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(),
-                    FormBuilderValidators.password(),
                   ]),
-                  keyboardType: TextInputType.emailAddress,
+                  keyboardType: TextInputType.text,
                 ),
               ],
             ),
@@ -112,11 +113,26 @@ class _LoginFormState extends State<LoginForm> {
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: KCustomButton(
               onTap: ()async{
-              /*  _formKey.currentState?.saveAndValidate();
-                debugPrint(_formKey.currentState?.value.toString());*/
-              //  Navigator.pushNamed(context, Routes.homeViewRoute);
-                //Get.dialog(const ShowLoadingPopup());
-               await AuthAPI.registerUser();
+                FocusScope.of(context).unfocus();
+                if(_formKey.currentState!.saveAndValidate()) {
+                  if(agreeToTerms){
+                    CustomPopups.showCustomLoadingPopup(context: context);
+                    var value = _formKey.currentState?.value;
+                    log("value $value");
+                    var  data = {
+                      "login_id":value!["emailOrMobile"].toString(),
+                      "password": value["password"].toString()
+                    };
+                    await AuthAPI.login(data: data);
+                    Navigator.pop(context);
+                  }else{
+                    KCustomSnackBar(
+                        message: "Please Agree Terms & Conditions",
+                        type: 'Error'
+                    );
+                  }
+
+                }
               },
               iconChild: const Icon(Icons.arrow_forward,color: Colors.white),
               buttonText: "Login",

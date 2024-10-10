@@ -33,10 +33,9 @@ class ShowLoadingPopup extends StatelessWidget {
               titleText?? "Please Wait...",
               style: TextStyle(
                 color: dimBlackColor2,
-                fontFamily: GoogleFonts.sansita().fontFamily,
                 fontWeight: FontWeight.bold,
-                letterSpacing: 2,
-                fontSize: 25,
+                letterSpacing: 1,
+                fontSize: 20,
               ),
             ),// Loading indicator
           ],

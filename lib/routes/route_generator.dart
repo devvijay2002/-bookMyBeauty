@@ -2,11 +2,11 @@ import 'dart:developer';
 import 'dart:io';
 import 'package:bookmybeauty/routes/routes.dart';
 import 'package:flutter/cupertino.dart';
-import '../screens/forgot_password/reset_password_view.dart';
-import '../screens/forgot_password/send_otp_view.dart';
-import '../screens/forgot_password/verify_otp_view.dart';
 import '../screens/guide_tour/view/guide_view.dart';
 import '../screens/home/view/home_view.dart';
+import '../screens/login/view/forgot_password/reset_password_view.dart';
+import '../screens/login/view/forgot_password/send_otp_view.dart';
+import '../screens/login/view/forgot_password/verify_otp_view.dart';
 import '../screens/login/view/login_view/login_view.dart';
 import '../screens/splash/view/splash_view.dart';
 import '../shared/fade_route_transition.dart';
@@ -55,7 +55,7 @@ class RouteGenerator {
         case Routes.verifyOtpRoute:
         return navigateToScreen(
           settings: settings,
-          route: const VerifyOtpView(),
+          route: VerifyOtpView(emailId: arguments['emailId'],),
         );
         case Routes.resetPasswordRoute:
         return navigateToScreen(

@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
+import '../../../../../api_service/auth_api.dart';
 import '../../../../../components/kcustom_button.dart';
 import '../../../../../components/form_builder_text_form_field.dart';
 import '../../../../../routes/routes.dart';
+import '../../../../../shared/custom_popups/main_class/custom_popups.dart';
 import '../../../../../util/util.dart';
-import '../../login/controller/login_controller.dart';
-
+import '../../../controller/login_controller.dart';
 
 
 class SendOtpForm extends StatefulWidget {
@@ -40,7 +41,7 @@ class _SendOtpFormState extends State<SendOtpForm> {
                 const SizedBox(height: 14),
                 Obx(() {
                   return CustomTextFormField(
-                    name: 'email',
+                    name: 'emailOrPhoneNumber',
                     labelText: 'Email or Mobile Number',
                     prefixIcon: loginController.isPhoneNumber.value ? Icons.phone : Icons.email,
                     onChanged: (s) {
@@ -66,10 +67,20 @@ class _SendOtpFormState extends State<SendOtpForm> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: KCustomButton(
-              onTap: () {
+              onTap: ()async{
                 Navigator.pushNamed(context, Routes.verifyOtpRoute);
-        /*        _formKey.currentState?.saveAndValidate();
-                debugPrint(_formKey.currentState?.value.toString());*/
+                FocusScope.of(context).unfocus();
+                if(_formKey.currentState!.saveAndValidate()) {
+                  CustomPopups.showCustomLoadingPopup(context: context);
+                  var value = _formKey.currentState?.value;
+                  log("value $value");
+                  var  data = {
+                    "email":value!["emailOrPhoneNumber"].toString(),
+                  };
+                  await AuthAPI.forgotPassword(data: data);
+                  Navigator.pop(context);
+
+                }
               },
               radius: 50,
               iconChild: const Icon(Icons.arrow_forward,color: Colors.white),

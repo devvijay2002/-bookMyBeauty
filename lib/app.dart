@@ -17,8 +17,8 @@ class App extends StatelessWidget {
        theme: ThemeData(
          appBarTheme: const AppBarTheme(
              systemOverlayStyle: SystemUiOverlayStyle(
-               statusBarColor: Colors.transparent, // Status bar color
-               statusBarIconBrightness: Brightness.dark, // Status bar icon brightness
+               statusBarColor: Colors.transparent,
+               statusBarIconBrightness: Brightness.dark,
              )),
         fontFamily: GoogleFonts.nunito().fontFamily,
         dividerColor: Colors.transparent,

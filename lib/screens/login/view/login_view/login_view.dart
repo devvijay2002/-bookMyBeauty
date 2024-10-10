@@ -27,7 +27,7 @@ class LoginViewState extends State<LoginView> {
       // Main body content with the background and form
       body: Stack(
         children: [
-          // Fixed background image (does not scroll)
+
           Positioned.fill(
             child: Container(
               decoration: const BoxDecoration(

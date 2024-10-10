@@ -11,6 +11,7 @@ class SessionAPI{
     try{
       var responseBody = await BaseAPIService.getRequest(
           apiURL: generateCSRFTokenAPI,
+          onSuccessMsg: false,
           header: {
             'uuid' :'148cfbe9-cca8-4004-84fb-c078cef98893'
           });
@@ -25,10 +26,11 @@ class SessionAPI{
     return '';
   }
 
-  static Future<String> getSessionToken({required String csrfToken})async{
+  static Future<String> getSessionToken({required String csrfToken,})async{
     try{
       var responseBody = await BaseAPIService.postRequest(
           apiURL: generateSessionTokenAPI,
+          onSuccessMsg: false,
           header:{
             'token' :csrfToken
           });
@@ -65,24 +67,38 @@ class SessionAPI{
   static Future<void> verifyUserSession() async {
     var userSession = await LocalStorage.readFromLocalStorage(key: userSessionKey);
     if (userSession != null) {
-      Map<String, dynamic> decodedToken = JwtDecoder.decode(userSession);
-      log("decodedToken $decodedToken");
-      // Get the expiration time from the decoded token
-      int expirationTime = decodedToken['exp'];
-      log("expirationTime $expirationTime");
-      // Get the current time in seconds (Unix timestamp)
-      int currentTime = DateTime.now().millisecondsSinceEpoch ~/ 1000;
-      log("currentTime $currentTime");
-      // Check if the token is expired
-      if (expirationTime < currentTime) {
-        log("Token is expired");
+      try {
+        log("userSession: $userSession");
+        Map<String, dynamic> decodedToken = JwtDecoder.decode(userSession);
+        log("decodedToken $decodedToken");
+
+        // Get the expiration time from the decoded token (in Unix timestamp format)
+        int expirationTime = decodedToken['exp'];
+        log("Expiration Time (Unix): $expirationTime");
+
+        // Convert expiration time into a readable DateTime format (UTC)
+        DateTime expirationDateTime = DateTime.fromMillisecondsSinceEpoch(expirationTime * 1000, isUtc: true);
+        log("Expiration DateTime (UTC): ${expirationDateTime.toIso8601String()}");
+
+        // Get the current UTC time in seconds
+        DateTime nowUtc = DateTime.now().toUtc(); // Always use UTC for comparison
+        int currentTimeUtc = nowUtc.millisecondsSinceEpoch ~/ 1000;
+        log("Current Time (Unix, UTC): $currentTimeUtc");
+        log("Current UTC Time: ${nowUtc.toIso8601String()}");
+
+        // Check if the token is expired
+        if (expirationTime <= currentTimeUtc) {
+          log("Token is expired");
+          await generateUserSession();
+        } else {
+          log("Token is still valid");
+        }
+      } catch (e) {
+        log("Error decoding token: ${e.toString()}");
         await generateUserSession();
-      } else {
-        log("Token is still valid");
       }
     } else {
       await generateUserSession();
-
     }
   }
 

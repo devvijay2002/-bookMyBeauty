@@ -21,16 +21,13 @@ class SplashView extends StatefulWidget {
 class _SplashViewState extends State<SplashView> {
 
   Future<void> initializeRoute() async {
-    var userSession = await SessionAPI.generateUserSession();
-    log("UserSession $userSession");
-    if(userSession.isNotEmpty) {
-      await Future.delayed(const Duration(seconds: 2), () {
+    await SessionAPI.verifyUserSession();
+    await Future.delayed(const Duration(seconds: 2), () {
       Get.off(() =>  GuideTourScreen(),
         transition: Transition.fadeIn,
         duration: const Duration(milliseconds: 800),
       );
     });
-    }
   }
 
   @override

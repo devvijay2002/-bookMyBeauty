@@ -11,7 +11,7 @@ import '../../util/util.dart';
 class BaseAPIService {
 
   // GET Method
-  static Future<dynamic> getRequest({required String apiURL, Map<String,String>? header}) async {
+  static Future<dynamic> getRequest({required String apiURL, Map<String,String>? header,bool onSuccessMsg =true}) async {
     final url = Uri.parse(apiURL);
     log("This is url :$url");
     try {
@@ -19,7 +19,7 @@ class BaseAPIService {
           url,
         headers: header
       ).timeout(const Duration(seconds: 15));
-      return handleResponse(response);
+      return handleResponse(response: response,onSuccessMsg: onSuccessMsg);
     } on SocketException catch (e) {
       KCustomSnackBar(
 
@@ -46,7 +46,7 @@ class BaseAPIService {
   }
 
   // POST Method
-  static Future<dynamic> postRequest({ required String apiURL, Map<String, dynamic>? data,Map<String,String>? header}) async {
+  static Future<dynamic> postRequest({ required String apiURL, Map<String, dynamic>? data,Map<String,String>? header, bool onSuccessMsg =true}) async {
     final url = Uri.parse(apiURL);
     log("This is url :$url");
     try {
@@ -55,7 +55,7 @@ class BaseAPIService {
         headers: header,
         body: json.encode(data),
       ).timeout(const Duration(seconds: 15));
-      return handleResponse(response);
+      return handleResponse(response: response,onSuccessMsg: onSuccessMsg);
     } on SocketException catch (e) {
       KCustomSnackBar(
 
@@ -81,7 +81,7 @@ class BaseAPIService {
   }
 
   // PUT Method
-  static Future<dynamic> putRequest({required String apiURL,required Map<String, dynamic> data}) async {
+  static Future<dynamic> putRequest({required String apiURL,required Map<String, dynamic> data,bool onSuccessMsg=true}) async {
     final url = Uri.parse(apiURL);
     log("This is url :$url");
     try {
@@ -90,7 +90,7 @@ class BaseAPIService {
         headers: {'Content-Type': 'application/json'},
         body: json.encode(data),
       ).timeout(const Duration(seconds: 15));
-      return handleResponse(response);
+      return handleResponse(response: response,onSuccessMsg: onSuccessMsg);
     } on SocketException catch (e) {
       KCustomSnackBar(
         message: "Unable to connect to the server. Please check your internet connection.",
@@ -115,12 +115,12 @@ class BaseAPIService {
   }
 
   // DELETE Method
-  static Future<void> deleteRequest({required String apiURL}) async {
+  static Future<void> deleteRequest({required String apiURL,bool onSuccessMsg=true}) async {
     final url = Uri.parse(apiURL);
     log("This is url :$url");
     try {
       final response = await http.delete(url).timeout(const Duration(seconds: 15));
-      return handleResponse(response);
+      return handleResponse(response: response,onSuccessMsg: onSuccessMsg);
     } on SocketException catch (e) {
       KCustomSnackBar(
         message: "Unable to connect to the server. Please check your internet connection.",
@@ -145,16 +145,21 @@ class BaseAPIService {
   }
 
   // Private method to handle API responses
-  static dynamic handleResponse(http.Response response) {
+  static dynamic handleResponse({required http.Response response, bool? onSuccessMsg}) {
     log("Status Code :${response.statusCode}");
+    log("RespBody :${response.body}");
     switch (response.statusCode) {
       case 200:
       case 201:
+      onSuccessMsg! ? KCustomSnackBar(
+          type: 'success',
+          message: "${json.decode(response.body)['message']}"
+        ):null;
         return json.decode(response.body);
       case 404:
         throw Exception('Resource not found');
       case 400:
-        throw Exception('Bad request');
+        throw Exception(json.decode(response.body)['message'] ??'Bad request');
         case 409:
         throw Exception(json.decode(response.body)['message'] ?? "Something went wrong" );
       case 500:

@@ -7,7 +7,8 @@ import '../../../../constants/images.dart';
 import 'widgets/otp_form.dart';
 
 class VerifyOtpView extends StatefulWidget {
-  const VerifyOtpView({super.key});
+  final String emailId;
+  const VerifyOtpView({super.key,required this.emailId});
 
   @override
   State<VerifyOtpView> createState() => _VerifyOtpViewState();
@@ -96,7 +97,7 @@ class _VerifyOtpViewState extends State<VerifyOtpView> {
                       const SizedBox(height: 30),
                       Expanded(
                         child: SingleChildScrollView(
-                          child: OtpForm(), // Your OTP form widget
+                          child: OtpForm(emailId: widget.emailId,), // Your OTP form widget
                         ),
                       ),
                     ],
