@@ -41,11 +41,11 @@ class RouteGenerator {
 
     switch (settings.name) {
 
-      case "/":
-        return navigateToScreen(
-          settings: settings,
-          route:   OurBlogsRoutes(),
-        );
+      // case "/":
+      //   return navigateToScreen(
+      //     settings: settings,
+      //     route:   OurBlogsRoutes(),
+      //   );
 
         case Routes.aboutUsRoute:
         return navigateToScreen(
@@ -72,7 +72,7 @@ class RouteGenerator {
           settings: settings,
           route:   addToCart(),
         );
-      case Routes.enableGeoLocation1:
+        case Routes.enableGeoLocation1:
         return navigateToScreen(
           settings: settings,
           route:   enableGeoLocation1(),
