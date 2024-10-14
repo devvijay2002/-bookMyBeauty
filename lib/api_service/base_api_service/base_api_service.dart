@@ -22,7 +22,6 @@ class BaseAPIService {
       return handleResponse(response: response,onSuccessMsg: onSuccessMsg);
     } on SocketException catch (e) {
       KCustomSnackBar(
-
         message: "Unable to connect to the server. Please check your internet connection.",
         type: 'Network error',
       );
@@ -59,6 +58,47 @@ class BaseAPIService {
     } on SocketException catch (e) {
       KCustomSnackBar(
 
+        message: "Unable to connect to the server. Please check your internet connection.",
+        type: 'Network error',
+      );
+    } on FormatException catch (e) {
+      KCustomSnackBar(
+        message: "Invalid format received from the server. Please try again later.",
+        type: 'Data error',
+      );
+    } on TimeoutException catch (e) {
+      KCustomSnackBar(
+        message: "The request has timed out. Please try again later.",
+        type: 'Timeout error',
+      );
+    } catch (e) {
+      KCustomSnackBar(
+        message: Util.returnExceptionMsg(e.toString()),
+        type: 'Error',
+      );
+    }
+  }
+
+
+ // POST Method
+  static Future<dynamic> postWithImageRequest({ required String apiURL, Map<String, String>? data,Map<String,String>? header, bool onSuccessMsg =true,required String imagePath}) async {
+    final url = Uri.parse(apiURL);
+    log("This is url :$url");
+    try {
+      var request = http.MultipartRequest('POST', url);
+      request.fields.addAll(data!);
+      request.files.add(await http.MultipartFile.fromPath('profile_image', imagePath));
+      request.headers.addAll(header!);
+
+      var response = await request.send();
+      var responseString = await response.stream.bytesToString();
+      log("Raw Response: $responseString");
+
+      var responseBody = jsonDecode(await response.stream.bytesToString());
+      log("responseBody11 :$responseBody");
+      return handleResponse(response: responseBody,onSuccessMsg: onSuccessMsg);
+    } on SocketException catch (e) {
+      KCustomSnackBar(
         message: "Unable to connect to the server. Please check your internet connection.",
         type: 'Network error',
       );
@@ -151,13 +191,13 @@ class BaseAPIService {
     switch (response.statusCode) {
       case 200:
       case 201:
-      onSuccessMsg! ? KCustomSnackBar(
+      (onSuccessMsg! && json.decode(response.body)['message'] !=null) ? KCustomSnackBar(
           type: 'success',
           message: "${json.decode(response.body)['message']}"
         ):null;
         return json.decode(response.body);
       case 404:
-        throw Exception('Resource not found');
+        throw Exception(json.decode(response.body)['message']??'Resource not found');
       case 400:
         throw Exception(json.decode(response.body)['message'] ??'Bad request');
         case 409:

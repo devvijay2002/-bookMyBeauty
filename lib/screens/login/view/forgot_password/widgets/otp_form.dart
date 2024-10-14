@@ -25,7 +25,7 @@ class _OtpFormState extends State<OtpForm> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 50.0),
+          padding: const EdgeInsets.symmetric(horizontal: 30.0),
           child: PinCodeTextField(
             controller: _otpController,
             appContext: context,

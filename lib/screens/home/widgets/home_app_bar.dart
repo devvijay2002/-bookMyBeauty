@@ -18,26 +18,22 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         onTap: () {
        homeScaffoldKey.currentState!.openDrawer();
         },
-        child: Icon(
-        Icons.line_weight_outlined,
-        color: dimBlackColor2, // Define dim_black_color separately
-        size: 30,
-        ),
+        child: Image.asset(sideMenuIcon)
       ),
       title: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           SizedBox(
-            height: Get.height * 0.09,
-            width: Get.width * 0.09,
-            child: const Image(image: AssetImage(appLogo)), // Define app_logo separately
+            height: Get.height * 0.08,
+            width: Get.width * 0.08,
+            child: const Image(image: AssetImage(appLogo)),
           ),
-          const SizedBox(width: 5),
+          const SizedBox(width: 10),
           Flexible(
             child: Text(
               "BookMyBeauty",
               style: TextStyle(
-                color: kPrimaryColor, // Define k_primary_color separately
+                color: kPrimaryColor,
                 fontSize: Get.width / 360 * 15,
                 fontWeight: FontWeight.bold,
               ),
@@ -59,7 +55,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         Padding(
           padding: const EdgeInsets.only(right: 14.0, left: 8),
           child: Icon(
-            Icons.shopping_cart,
+            Icons.shopping_cart_outlined,
             size: Get.width * 0.07,
             color: dimBlackColor2,
           ),

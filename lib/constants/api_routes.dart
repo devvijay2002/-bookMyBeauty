@@ -6,4 +6,9 @@ const String loginUserAPI = "$baseURL/api/v1/user/login";
 const String verifyOtpAPI = "$baseURL/api/v1/user/verifyotp";
 const String forgotPasswordAPI = "$baseURL/api/v1/user/forgotpassword";
 const String resetPasswordAPI = "$baseURL/api/v1/user/resetpassword";
+const String dashboardAPI = "$baseURL/api/v1/user/dashboard";
 
+
+
+const applicationJsonHeader = {'Content-Type': 'application/json'};
+const acceptHeader = {'accept': '*/*'};

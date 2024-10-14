@@ -6,8 +6,6 @@ import 'package:bookmybeauty/local_storage/local_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import '../../../local_storage/local_storage_keys.dart';
-import '../../../shared/responsive_progress_indicator.dart';
 import '../../guide_tour/view/guide_view.dart';
 
 
@@ -42,8 +40,8 @@ class _SplashViewState extends State<SplashView> {
       extendBody: true,
       extendBodyBehindAppBar: true,
       body: Container(
-        height: Get.height,
-        width: Get.width,
+        height:MediaQuery.sizeOf(context).height,
+        width: MediaQuery.sizeOf(context).width,
         decoration: const BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.cover,
@@ -55,13 +53,13 @@ class _SplashViewState extends State<SplashView> {
          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image(
-              width: Get.width * 0.45,
-              height: Get.width* 0.45,
+              width: MediaQuery.sizeOf(context).width * 0.45,
+              height: MediaQuery.sizeOf(context).width* 0.45,
               image: const AssetImage(appLogo),
             ),
             const SizedBox(height: 16),
             LottieBuilder.asset(
-              height: Get.height * 0.13,
+              height: MediaQuery.sizeOf(context).height * 0.13,
               loading3,
             )
           ],

@@ -1,13 +1,16 @@
 import 'package:bookmybeauty/constants/colors.dart';
 import 'package:bookmybeauty/global_controllers/shared_controller.dart';
+import 'package:bookmybeauty/screens/home/controller/home_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shimmer/shimmer.dart';
 
 
 class ImageSlider extends StatefulWidget {
-  final List<String> imagesList;
-  const ImageSlider({super.key,required this.imagesList});
+
+
+  const ImageSlider({super.key});
 
   @override
   ImageSliderState createState() => ImageSliderState();
@@ -16,48 +19,50 @@ class ImageSlider extends StatefulWidget {
 class ImageSliderState extends State<ImageSlider> {
   final CarouselSliderController carouselController = CarouselSliderController();
     var sharedController = Get.find<SharedController>();
-
-
+    var homeController = Get.find<HomeController>();
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return homeController.bannerImageList.isNotEmpty? Stack(
       alignment: Alignment.bottomCenter,
       children: [
-        CarouselSlider(
-          items: widget.imagesList.map((item) {
-            return Container(
-              height: Get.height * 0.4,
-              width: Get.width,
-              clipBehavior: Clip.antiAlias,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-              ),
-              margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
-              child: Image.asset(
-                item,
-                fit: BoxFit.cover, // Ensure the image covers the entire area
+        Obx(() {
+            return CarouselSlider(
+              items: homeController.bannerImageList.map((item) {
+                return Container(
+                  height: Get.height * 0.4,
+                  width: Get.width,
+                  clipBehavior: Clip.antiAlias,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+                  child: Image.network(
+                    item,
+                    fit: BoxFit.cover,
+                  ),
+                );
+              }).toList(),
+              carouselController: carouselController,
+              options: CarouselOptions(
+                scrollPhysics: const BouncingScrollPhysics(),
+                autoPlay: true,
+                autoPlayInterval: const Duration(seconds: 8),
+                aspectRatio: 16 / 8,
+                viewportFraction: 1,
+                onPageChanged: (index, reason) {
+                  sharedController.updateImageIndex(index: index);
+                },
               ),
             );
-          }).toList(),
-          carouselController: carouselController,
-          options: CarouselOptions(
-            scrollPhysics: const BouncingScrollPhysics(),
-            autoPlay: true,
-            autoPlayInterval: const Duration(seconds: 8),
-            aspectRatio: 16 / 8,
-            viewportFraction: 1,
-            onPageChanged: (index, reason) {
-              sharedController.updateImageIndex(index: index);
-            },
-          ),
+          }
         ),
         Obx(() {
             return Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: widget.imagesList.asMap().entries.map((entry) {
+                children: homeController.bannerImageList.asMap().entries.map((entry) {
                   return GestureDetector(
                     onTap: () => carouselController.animateToPage(entry.key),
                     child: Container(
@@ -76,6 +81,27 @@ class ImageSliderState extends State<ImageSlider> {
           }
         ),
       ],
+    )
+        :
+    Container(
+      height: Get.height * 0.4,
+      width: Get.width,
+      clipBehavior: Clip.antiAlias,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+      ),
+      margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+      child: Shimmer.fromColors(
+        baseColor: kBaseColor,
+        highlightColor: khighlightColor,
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(6),
+          ),
+        ),
+      ),
     );
+
   }
 }

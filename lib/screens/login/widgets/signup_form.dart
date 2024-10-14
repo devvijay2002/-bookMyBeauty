@@ -205,24 +205,27 @@ class _SignupFormState extends State<SignupForm> {
                   child: KCustomButton(
                     onTap: ()async{
                       FocusScope.of(context).unfocus();
-                      Navigator.pushNamed(context, Routes.verifyOtpRoute,arguments: {
-                        'emailId' :"vijay@gmail.com"
-                      });
-               /*       if(_formKey.currentState!.saveAndValidate()) {
+
+                      if(_formKey.currentState!.saveAndValidate()) {
                         if(loginController.agreeToTerms.value){
                           CustomPopups.showCustomLoadingPopup(context: context);
                           var value = _formKey.currentState?.value;
-                          log("value $value");
+                       //   log("value $value");
                           var  data = {
                             "name": value!["name"].toString(),
                             "email":value["email"].toString(),
                             "mobile": value["mobile"].toString(),
-                            "gender": value["gender"].toString()=="Male"?0:value["gender"].toString()=="Female"?1:2,
+                            "gender": value["gender"].toString()=="Male"?"0":value["gender"].toString()=="Female"?"1":"2",
                             "password": value["password"].toString()
                           };
-                          await AuthAPI.registerUser(data: data);
+                         var res= await AuthAPI.registerUser(data: data, imagePath: loginController.croppedImagePath.value);
                           Navigator.pop(context);
-                          Navigator.pushNamed(context, Routes.verifyOtpRoute);
+                          if(res && context.mounted){
+                            Navigator.pushNamed(context, Routes.verifyOtpRoute, arguments: {
+                              'emailId':value["email"].toString()
+                            });
+                          }
+
                         }else{
                           KCustomSnackBar(
                             message: "Please Agree Terms & Conditions",
@@ -230,7 +233,7 @@ class _SignupFormState extends State<SignupForm> {
                           );
                         }
 
-                      }*/
+                      }
                     },
                     radius: 50,
                     iconChild: const Icon(Icons.arrow_forward, color: Colors.white, size: 17,),

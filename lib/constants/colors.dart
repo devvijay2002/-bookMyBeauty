@@ -14,6 +14,8 @@ import 'package:flutter/material.dart';
   const Color dimRedColor = Color(0xFFFFD6D6);
   Color redAccent = Colors.redAccent.withOpacity(0.5);
   const Color blueAccent = Color(0xC5202797);
+  const Color kBaseColor = Colors.grey;
+  const Color khighlightColor = Colors.grey;
   const Color dimLightGreyScreen = Color(0xFFF5F5F5);
   const Color categoryScreenLightGrey = Color(0xFFF1F0F6);
   const Color categoryScreenLightPurple = Color(0xFF877CA7);

@@ -114,7 +114,8 @@ class _LoginFormState extends State<LoginForm> {
             child: KCustomButton(
               onTap: ()async{
                 FocusScope.of(context).unfocus();
-                if(_formKey.currentState!.saveAndValidate()) {
+                Navigator.pushNamed(context, Routes.homeViewRoute);
+        /*        if(_formKey.currentState!.saveAndValidate()) {
                   if(agreeToTerms){
                     CustomPopups.showCustomLoadingPopup(context: context);
                     var value = _formKey.currentState?.value;
@@ -123,8 +124,12 @@ class _LoginFormState extends State<LoginForm> {
                       "login_id":value!["emailOrMobile"].toString(),
                       "password": value["password"].toString()
                     };
-                    await AuthAPI.login(data: data);
+                 var res = await AuthAPI.login(data: data);
                     Navigator.pop(context);
+                    if(res && context.mounted){
+                      Navigator.pushNamed(context, Routes.homeViewRoute);
+                    }
+
                   }else{
                     KCustomSnackBar(
                         message: "Please Agree Terms & Conditions",
@@ -132,7 +137,7 @@ class _LoginFormState extends State<LoginForm> {
                     );
                   }
 
-                }
+                }*/
               },
               iconChild: const Icon(Icons.arrow_forward,color: Colors.white),
               buttonText: "Login",
