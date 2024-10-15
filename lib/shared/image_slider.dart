@@ -40,7 +40,24 @@ class ImageSliderState extends State<ImageSlider> {
                   child: Image.network(
                     item,
                     fit: BoxFit.cover,
-                  ),
+                    loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+                      if (loadingProgress == null) {
+                        return child;
+                      } else {
+                        return  Shimmer.fromColors(
+                          baseColor: kBaseColor,
+                          highlightColor: khighlightColor,
+                          child: Container(
+                            height: Get.height * 0.2,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(6),
+                            ),
+                          ),
+                        );
+                      }
+                    },
+                  )
                 );
               }).toList(),
               carouselController: carouselController,
@@ -84,17 +101,18 @@ class ImageSliderState extends State<ImageSlider> {
     )
         :
     Container(
-      height: Get.height * 0.4,
+      height: Get.height * 0.2,
       width: Get.width,
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
       ),
-      margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+
       child: Shimmer.fromColors(
         baseColor: kBaseColor,
         highlightColor: khighlightColor,
         child: Container(
+          height: Get.height * 0.2,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(6),
