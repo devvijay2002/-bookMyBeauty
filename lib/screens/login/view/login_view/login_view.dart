@@ -22,13 +22,13 @@ class LoginViewState extends State<LoginView> {
     return Scaffold(
       // Prevent resizing of the background when the keyboard appears
       resizeToAvoidBottomInset: true,
-      backgroundColor: kPrimaryColor,
+      backgroundColor: Colors.white,
 
       // Main body content with the background and form
       body: Stack(
         children: [
-
-          Positioned.fill(
+          Positioned.fromRect(
+            rect: Rect.fromCenter(  center: Offset(Get.width/2, Get.height / 10), width: Get.width, height: Get.height/2),
             child: Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
@@ -146,7 +146,7 @@ class LoginViewState extends State<LoginView> {
                       Expanded(
                         child: SingleChildScrollView(
                           child: Padding(
-                            padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+                            padding: const EdgeInsets.only(bottom: 20),
                             child: isSelected[0]
                                 ? const LoginForm()  // Login form content
                                 : const SignupForm(), // Signup form content
