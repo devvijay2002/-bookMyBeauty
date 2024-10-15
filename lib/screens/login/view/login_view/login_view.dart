@@ -21,7 +21,7 @@ class LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     return Scaffold(
       // Prevent resizing of the background when the keyboard appears
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
       backgroundColor: kPrimaryColor,
 
       // Main body content with the background and form
